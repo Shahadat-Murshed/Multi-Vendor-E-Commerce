@@ -179,7 +179,7 @@
                             <a href="auth-register.html">Create One</a>
                         </div>
                         <div class="simple-footer">
-                            Copyright &copy; CIU 2022
+                            Copyright &copy; 2023
                         </div>
                     </div>
                 </div>

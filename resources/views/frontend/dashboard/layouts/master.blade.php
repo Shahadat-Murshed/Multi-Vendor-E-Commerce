@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="{{asset('frontend/css/add_row_custon.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/mobile_menu.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/jquery.exzoom.css')}}">
-  <link rel="stylesheet" href="{{asset('frontend/css/multiple-image-video.css')}}">
+  <link rel="stylesheet" href= "{{asset('frontend/css/multiple-image-video.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/ranger_style.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/jquery.classycountdown.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/venobox.min.css')}}">

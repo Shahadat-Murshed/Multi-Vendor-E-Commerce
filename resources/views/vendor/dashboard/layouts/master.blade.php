@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="{{asset('frontend/css/jquery.classycountdown.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/venobox.min.css')}}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
   <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
@@ -99,9 +100,19 @@
   <script src="{{asset('fronted/js/venobox.min.js')}}"></script>
   <!--classycountdown js-->
   <script src="{{asset('fronted/js/jquery.classycountdown.js')}}"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
   <!--main/custom js-->
   <script src="{{asset('fronted/js/main.js')}}"></script>
+  <script>
+    @if ($errors->any())
+      @foreach ($errors->all() as $error )
+        @php
+          toastr()->error($error);
+        @endphp
+      @endforeach
+    @endif
+  </script>
 </body>
 
 </html>

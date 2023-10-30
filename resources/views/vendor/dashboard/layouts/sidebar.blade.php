@@ -10,7 +10,7 @@
     <li><a href="dsahboard_download.html"><i class="fa-solid fa-cloud-download"></i> Downloads</a></li>
     <li><a href="dsahboard_review.html"><i class="far fa-star"></i> Reviews</a></li>
     <li><a href="dsahboard_wishlist.html"><i class="far fa-heart"></i> Wishlist</a></li>
-    <li><a href="dsahboard_profile.html"><i class="far fa-user"></i> My Profile</a></li>
+    <li><a href="{{route('vendor.profile')}}"><i class="far fa-user"></i> My Profile</a></li>
     <li><a href="dsahboard_address.html"><i class="fa fa-address-card"></i> Addresses</a></li>
     <li>
       
@@ -18,7 +18,7 @@
         @csrf
         <a href="route('logout')" onclick="event.preventDefault();
         this.closest('form').submit();"><i class="fa-solid fa-sign-out"></i> Log out</a>
-    </form>
+      </form>
   </li>
   </ul>
 </div>

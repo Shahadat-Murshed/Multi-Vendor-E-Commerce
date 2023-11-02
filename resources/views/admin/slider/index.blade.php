@@ -18,7 +18,7 @@
             <div class="card">
               <div class="card-header">
                 <h4>Full Width</h4>
-                <div class="card-header-action"><a href="{{route('admin.slider.create')}}" class="btn btn-primary">+ Create New Slider</a></div>
+                <div class="card-header-action"><a href="{{route('admin.slider.create')}}" class="btn btn-primary"><i class="fas fa-plus"></i> Create New Slider</a></div>
               </div>
               <div class="card-body p-0">
                 {{$dataTable->table()}}

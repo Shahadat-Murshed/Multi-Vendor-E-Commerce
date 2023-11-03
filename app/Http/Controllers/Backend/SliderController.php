@@ -125,4 +125,13 @@ class SliderController extends Controller
 
         return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
     }
+
+    public function changeStatus(Request $request){
+        
+        $slider = Slider::findOrFail($request->id);
+        $slider->status = $request->status == 'true' ? 1 : 0;
+        $slider->save();
+
+        return response(['message' => 'Status has been updated!']);
+    }
 }

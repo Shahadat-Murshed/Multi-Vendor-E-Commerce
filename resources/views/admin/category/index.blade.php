@@ -5,9 +5,9 @@
         <div class="section-header">
             <h1>Category</h1>
             <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="#">Components</a></div>
-            <div class="breadcrumb-item">Table</div>
+                <div class="breadcrumb-item active"><a href="{{route('admin.dashboard')}}">Dashboard</a></div>
+                <div class="breadcrumb-item"><a href="{{route('admin.category.index')}}"> All Categories</a></div>
+                <div class="breadcrumb-item">Categories List</div>
             </div>
         </div>
 

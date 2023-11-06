@@ -5,9 +5,9 @@
         <div class="section-header">
             <h1>Category</h1>
             <div class="section-header-breadcrumb">
-            <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-            <div class="breadcrumb-item"><a href="#">Components</a></div>
-            <div class="breadcrumb-item">Table</div>
+                <div class="breadcrumb-item active"><a href="{{route('admin.dashboard')}}">Dashboard</a></div>
+                <div class="breadcrumb-item"><a href="{{route('admin.category.index')}}"> All Categories</a></div>
+                <div class="breadcrumb-item">Create New</div>
             </div>
         </div>
 
@@ -42,6 +42,7 @@
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-primary">Create</button>
+                            <button type="button" class="btn btn-danger"><a style="text-decoration: none; color:white" href="{{route('admin.category.index')}}">Cancel</a></button>
                         </form>
                     </div>
                     </div>

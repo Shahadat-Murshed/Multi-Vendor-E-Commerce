@@ -29,6 +29,11 @@
                             >Sub Category</a
                         >
                     </li>
+                    <li>
+                        <a class="nav-link" href="{{route('admin.child-category.index')}}"
+                            >Child Category</a
+                        >
+                    </li>
                 </ul>
             </li>
             <li class="dropdown">

@@ -46,14 +46,14 @@
                 'admin.brand.*'
             ])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
-                    ><i class="fas fa-window-maximize"></i> <span>Manage Products</span></a
+                    ><i class="fas fa-cubes"></i><span>Manage Products</span></a
                 >
                 <ul class="dropdown-menu">
                     <li class="{{setActive([
                         'admin.brand.*'
                     ])}}">
                         <a class="nav-link" href="{{route('admin.brand.index')}}"
-                            ><i class="fas fa-image"></i>Brands</a
+                            ><i class="fab fa-apple"></i></i>Brands</a
                         >
                     </li>
                 </ul>

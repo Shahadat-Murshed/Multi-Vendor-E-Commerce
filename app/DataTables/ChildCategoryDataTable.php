@@ -28,12 +28,27 @@ class ChildCategoryDataTable extends DataTable
 
                 return $editBtn.$deleteBtn;
             })
+            ->addColumn('status', function($query){
+                if($query->status == 1){
+                    $button = '<label class="custom-switch mt-2">
+                        <input type="checkbox" checked name="custom-switch-checkbox" data-id="'.$query->id.'" class="custom-switch-input change-status" >
+                        <span class="custom-switch-indicator"></span>
+                    </label>';
+                }else {
+                    $button = '<label class="custom-switch mt-2">
+                        <input type="checkbox" name="custom-switch-checkbox" data-id="'.$query->id.'" class="custom-switch-input change-status">
+                        <span class="custom-switch-indicator"></span>
+                    </label>';
+                }
+                return $button;
+            })
             ->addColumn('category', function($query){
                 return $query->category->name;
             })
             ->addColumn('sub_category', function($query){
                 return $query->subCategory->name;
             })
+            ->rawColumns(['status', 'action'])
             ->setRowId('id');
     }
 
@@ -55,7 +70,7 @@ class ChildCategoryDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -77,6 +92,7 @@ class ChildCategoryDataTable extends DataTable
             Column::make('name'),
             Column::make('category'),
             Column::make('sub_category'),
+            Column::make('status'),
             Column::computed('action')
                   ->exportable(false)
                   ->printable(false)

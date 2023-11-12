@@ -16,34 +16,34 @@
             <li class="menu-header">Starter</li>
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
-                    ><i class="fas fa-columns"></i> <span>Manage</span></a
+                    ><i class="fas fa-layer-group"></i> <span>Manage Categories</span></a
                 >
                 <ul class="dropdown-menu">
                     <li>
                         <a class="nav-link" href="{{route('admin.category.index')}}"
-                            >Category</a
+                            ><i class="fas fa-bars"></i>Category</a
                         >
                     </li>
                     <li>
                         <a class="nav-link" href="{{route('admin.sub-category.index')}}"
-                            >Sub Category</a
+                            ><i class="fas fa-list-ul"></i></i></i>Sub Category</a
                         >
                     </li>
                     <li>
                         <a class="nav-link" href="{{route('admin.child-category.index')}}"
-                            >Child Category</a
+                            ><i class="fas fa-folder"></i>Child Category</a
                         >
                     </li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
-                    ><i class="fas fa-columns"></i> <span>Manage Website</span></a
+                    ><i class="fas fa-window-maximize"></i> <span>Manage Website</span></a
                 >
                 <ul class="dropdown-menu">
                     <li>
                         <a class="nav-link" href="{{route('admin.slider.index')}}"
-                            >Slider</a
+                            ><i class="fas fa-image"></i>Slider</a
                         >
                     </li>
                 </ul>

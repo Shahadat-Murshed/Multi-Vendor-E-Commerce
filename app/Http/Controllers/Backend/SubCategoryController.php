@@ -102,11 +102,11 @@ class SubCategoryController extends Controller
     public function destroy(string $id)
     {
         $subCategory = SubCategory::findOrFail($id);
-        // $childCategory = ChildCategory::where('sub_category_id', $subCategory->id)->count();
+        $childCategory = ChildCategory::where('sub_category_id', $subCategory->id)->count();
 
-        // if($childCategory > 0){
-        //     return response(['status' => 'error', 'message' => 'This items contain, sub items for delete this you have to delete the sub items first!']);
-        // }
+        if($childCategory > 0){
+            return response(['status' => 'error', 'message' => 'This items contains sub items. To delete this you have to delete the sub items first!']);
+        }
         $subCategory->delete();
 
         return response(['status' => 'success', 'message' => 'Deleted Successfully!']);
@@ -114,9 +114,9 @@ class SubCategoryController extends Controller
 
     public function changeStatus(Request $request)
     {
-        $category = SubCategory::findOrFail($request->id);
-        $category->status = $request->status == 'true' ? 1 : 0;
-        $category->save();
+        $subCategory = SubCategory::findOrFail($request->id);
+        $subCategory->status = $request->status == 'true' ? 1 : 0;
+        $subCategory->save();
 
         return response(['message' => 'Status has been updated!']);
     }

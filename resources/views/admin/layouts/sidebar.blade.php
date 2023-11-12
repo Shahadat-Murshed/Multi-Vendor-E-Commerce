@@ -26,17 +26,17 @@
                 <ul class="dropdown-menu">
                     <li class="{{setActive(['admin.category.*'])}}">
                         <a class="nav-link" href="{{route('admin.category.index')}}"
-                            ><i class="fas fa-bars"></i>Category</a
+                            ><i class="fas fa-bars mr-0"></i>Category</a
                         >
                     </li>
                     <li class="{{setActive(['admin.sub-category.*'])}}">
                         <a class="nav-link" href="{{route('admin.sub-category.index')}}"
-                            ><i class="fas fa-list-ul"></i></i></i>Sub Category</a
+                            ><i class="fas fa-list-ul mr-0"></i></i></i>Sub Category</a
                         >
                     </li>
                     <li class="{{setActive(['admin.child-category.*'])}}">
                         <a class="nav-link" href="{{route('admin.child-category.index')}}"
-                            ><i class="fas fa-folder"></i>Child Category</a
+                            ><i class="fas fa-folder mr-0"></i>Child Category</a
                         >
                     </li>
                 </ul>
@@ -53,7 +53,24 @@
                         'admin.brand.*'
                     ])}}">
                         <a class="nav-link" href="{{route('admin.brand.index')}}"
-                            ><i class="fab fa-apple"></i></i>Brands</a
+                            ><i class="fab fa-apple mr-0"></i></i>Brands</a
+                        >
+                    </li>
+                </ul>
+            </li>
+
+            <li class="dropdown {{setActive([
+                'admin.vendor-profile.*'
+            ])}}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
+                    ><i class="fas fa-warehouse"></i></i> <span>E-Commerce</span></a
+                >
+                <ul class="dropdown-menu">
+                    <li class="{{setActive([
+                        'admin.vendor-profile.*'
+                    ])}}">
+                        <a class="nav-link" href="{{route('admin.vendor-profile.index')}}"
+                            ><i class="fas fa-people-carry mr-0"></i>Vendor Profile</a
                         >
                     </li>
                 </ul>
@@ -70,7 +87,7 @@
                         'admin.slider.*'
                     ])}}">
                         <a class="nav-link" href="{{route('admin.slider.index')}}"
-                            ><i class="fas fa-image"></i>Slider</a
+                            ><i class="fas fa-image mr-0"></i>Slider</a
                         >
                     </li>
                 </ul>

@@ -14,34 +14,44 @@
                 >
             </li>
             <li class="menu-header">Starter</li>
-            <li class="dropdown">
+            <li class="dropdown {{setActive([
+                'admin.category.*',
+                'admin.sub-category.*',
+                'admin.child-category.*',
+                
+            ])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
                     ><i class="fas fa-layer-group"></i> <span>Manage Categories</span></a
                 >
                 <ul class="dropdown-menu">
-                    <li>
+                    <li class="{{setActive(['admin.category.*'])}}">
                         <a class="nav-link" href="{{route('admin.category.index')}}"
                             ><i class="fas fa-bars"></i>Category</a
                         >
                     </li>
-                    <li>
+                    <li class="{{setActive(['admin.sub-category.*'])}}">
                         <a class="nav-link" href="{{route('admin.sub-category.index')}}"
                             ><i class="fas fa-list-ul"></i></i></i>Sub Category</a
                         >
                     </li>
-                    <li>
+                    <li class="{{setActive(['admin.child-category.*'])}}">
                         <a class="nav-link" href="{{route('admin.child-category.index')}}"
                             ><i class="fas fa-folder"></i>Child Category</a
                         >
                     </li>
                 </ul>
             </li>
-            <li class="dropdown">
+
+            <li class="dropdown {{setActive([
+                'admin.slider.*'
+            ])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
                     ><i class="fas fa-window-maximize"></i> <span>Manage Website</span></a
                 >
                 <ul class="dropdown-menu">
-                    <li>
+                    <li class="{{setActive([
+                        'admin.slider.*'
+                    ])}}">
                         <a class="nav-link" href="{{route('admin.slider.index')}}"
                             ><i class="fas fa-image"></i>Slider</a
                         >

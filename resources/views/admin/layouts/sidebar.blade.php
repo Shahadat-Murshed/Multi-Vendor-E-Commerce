@@ -43,7 +43,8 @@
             </li>
 
             <li class="dropdown {{setActive([
-                'admin.brand.*'
+                'admin.brand.*',
+                'admin.products.*'
             ])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
                     ><i class="fas fa-cubes"></i><span>Manage Products</span></a
@@ -54,6 +55,13 @@
                     ])}}">
                         <a class="nav-link" href="{{route('admin.brand.index')}}"
                             ><i class="fab fa-apple mr-0"></i></i>Brands</a
+                        >
+                    </li>
+                    <li class="{{setActive([
+                        'admin.products.*'
+                    ])}}">
+                        <a class="nav-link" href="{{route('admin.products.index')}}"
+                            ><i class="fas fa-cube mr-0"></i></i>Products</a
                         >
                     </li>
                 </ul>

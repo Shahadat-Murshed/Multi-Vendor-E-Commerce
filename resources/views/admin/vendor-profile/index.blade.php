@@ -64,6 +64,7 @@
                         </div>
 
                         <button type="submmit" class="btn btn-primary">Update</button>
+                        <a class="btn btn-danger" href="{{ url()->previous() }}">Cancel</a>
                     </form>
                   </div>
 

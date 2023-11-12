@@ -16,7 +16,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Edit {{$brand->name}}</h4>
+                        <h4>Edit "{{$brand->name}}"</h4>
                     </div>
                     <div class="card-body">
                         <form action="{{route('admin.brand.update', $brand->id)}}" method="POST" enctype="multipart/form-data">

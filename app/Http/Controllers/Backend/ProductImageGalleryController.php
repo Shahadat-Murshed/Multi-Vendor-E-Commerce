@@ -41,7 +41,7 @@ class ProductImageGalleryController extends Controller
         $product = Product::findorFail($request->product);
         $product_name = $product->name;
         /** Handle image upload */
-        $imagePaths = $this->uploadMultiImage($request, 'image', 'uploads/'.$product_name.'/',);
+        $imagePaths = $this->uploadMultiImage($request, 'image', 'uploads/products/'.$product_name.'/',);
 
         foreach($imagePaths as $path){
             $productImageGallery = new ProductImageGallery();

@@ -5,12 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <title>Multi Vendor E-commerce</title>
-  <link rel="icon" type="image/png" href="{{asset('frontend/images')}}/favicon.png">
+  <title>
+    @yield('title')
+  </title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
   <link rel="stylesheet" href="{{asset('frontend/css/all.min.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}">
-  <link rel="stylesheet" href="{{asset('frontend/css/select2.min.cs')}}s">
+  <link rel="stylesheet" href="{{asset('frontend/css/select2.min.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/slick.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/jquery.nice-number.min.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/jquery.calendar.css')}}">
@@ -22,8 +25,7 @@
   <link rel="stylesheet" href="{{asset('frontend/css/jquery.classycountdown.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/venobox.min.css')}}">
   <link rel="stylesheet" href="{{asset('backend/assets/modules/summernote/summernote-bs4.css')}}">
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <link rel="stylesheet" href="//cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
   <link rel="stylesheet" href="{{asset('backend/assets/modules/bootstrap-daterangepicker/daterangepicker.css')}}">
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
@@ -41,8 +43,8 @@
   ==============================-->
   <div class="wsus__dashboard_menu">
     <div class="wsusd__dashboard_user">
-      <img src="{{asset('frontend/images')}}/dashboard_user.jpg" alt="img" class="img-fluid">
-      <p>anik roy</p>
+      <img src="{{asset(auth()->user()->image)}}" alt="img" class="img-fluid">
+      <p>{{auth()->user()->name}}</p>
     </div>
   </div>
   <!--=============================
@@ -53,7 +55,7 @@
   <!--=============================
     DASHBOARD START
   ==============================-->
-  @yield('content')
+    @yield('content')
   <!--=============================
     DASHBOARD START
   ==============================-->
@@ -123,20 +125,79 @@
     @endif
   </script>
 
-<script>
-  /** summernote **/
-  $('.summernote').summernote({
-      height:150
-  })
+  <script>
+    /** summernote **/
+    $('.summernote').summernote({
+        height:150
+    })
 
-  /** date picker **/
-  $('.datepicker').daterangepicker({
-      locale: {
-          format: 'YYYY-MM-DD'
-      },
-      singleDatePicker: true
-  });
-</script>
+    /** date picker **/
+    $('.datepicker').daterangepicker({
+        locale: {
+            format: 'YYYY-MM-DD'
+        },
+        singleDatePicker: true
+    });
+  </script>
+
+    <!-- Dynamic Delete alart -->
+
+    <script>
+        $(document).ready(function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+
+            $('body').on('click', '.delete-item', function(event){
+                event.preventDefault();
+
+                let deleteUrl = $(this).attr('href');
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "You won't be able to revert this!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+
+                        $.ajax({
+                            type: 'DELETE',
+                            url: deleteUrl,
+
+                            success: function(data){
+
+                                if(data.status == 'success'){
+                                    Swal.fire(
+                                        'Deleted!',
+                                        data.message,
+                                        'success'
+                                    )
+                                    window.location.reload();
+                                }else if (data.status == 'error'){
+                                    Swal.fire(
+                                        'Cant Delete',
+                                        data.message,
+                                        'error'
+                                    )
+                                }
+                            },
+                            error: function(xhr, status, error){
+                                console.log(error);
+                            }
+                        })
+                    }
+                })
+            })
+
+        })
+    </script>
 
   @stack('scripts')
 </body>

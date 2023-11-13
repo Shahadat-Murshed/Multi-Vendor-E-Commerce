@@ -5,9 +5,15 @@
         <section class="section">
           <div class="section-header">
             <h1>Product Variant Items</h1>
+            <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item active"><a href="{{route('admin.dashboard')}}">Dashboard</a></div>
+                <div class="breadcrumb-item"><a href="{{route('admin.products.index')}}">Products</a></div>
+                <div class="breadcrumb-item"><a href="{{ url()->previous() }}">Variants</a></div>
+                <div class="breadcrumb-item">{{$variant->name}}</div>
+            </div>
           </div>
           <div class="mb-3">
-            <a href="{{route('admin.products-variant.index', ['product' => $product->id])}}" class="btn btn-primary">Back</a>
+            <a href="{{route('admin.products-variant.index', ['product' => $product->id])}}" class="btn btn-outline-danger px-3"><i class="fas fa-chevron-left"></i><span class="ml-3">Back</span></a></a>
           </div>
           <div class="section-body">
 

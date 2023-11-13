@@ -13,7 +13,7 @@
             </div>
           </div>
          <div class="mb-3">
-            <a href="{{route('admin.products.index')}}" class="btn btn-danger px-3"><i class="fas fa-chevron-left"></i><span class="ml-3">Back</span></a>
+            <a href="{{route('admin.products.index')}}" class="btn btn-outline-danger px-3"><i class="fas fa-chevron-left"></i><span class="ml-3">Back</span></a>
          </div>
           <div class="section-body">
             <div class="row">

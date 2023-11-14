@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\VendorController;
 use App\Http\Controllers\Backend\VendorProductController;
+use App\Http\Controllers\Backend\VendorProductImageGalleryController;
 use App\Http\Controllers\Backend\VendorProfileController;
 use App\Http\Controllers\Backend\VendorShopProfileController;
 use Illuminate\Support\Facades\Route;
@@ -20,3 +21,6 @@ Route::get('product/get-subcategories', [VendorProductController::class, 'getSub
 Route::get('product/get-child-categories', [VendorProductController::class, 'getChildCategories'])->name('product.get-child-categories');
 Route::put('products/change-status', [VendorProductController::class, 'changeStatus'])->name('products.change-status');
 Route::resource('products', VendorProductController::class);
+
+/** Products image gallery route */
+Route::resource('products-image-gallery', VendorProductImageGalleryController::class);

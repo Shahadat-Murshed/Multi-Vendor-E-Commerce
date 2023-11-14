@@ -33,8 +33,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group wsus__input">
-                                <label for="inputState">Category</label>
-                                <select id="inputState" class="form-control main-category" name="category">
+                                <label for="category">Category</label>
+                                <select id="category" class="form-control main-category" name="category">
                                   <option value="">Select</option>
                                   @foreach ($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
@@ -44,8 +44,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group wsus__input">
-                                <label for="inputState">Sub Category</label>
-                                <select id="inputState" class="form-control sub-category" name="sub_category">
+                                <label for="sub_category">Sub Category</label>
+                                <select id="sub_category" class="form-control sub-category" name="sub_category">
                                     <option value="">Select</option>
 
                                 </select>
@@ -53,8 +53,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group wsus__input">
-                                <label for="inputState">Child Category</label>
-                                <select id="inputState" class="form-control child-category" name="child_category">
+                                <label for="child_category">Child Category</label>
+                                <select id="child_category" class="form-control child-category" name="child_category">
                                     <option value="">Select</option>
                                 </select>
                             </div>
@@ -63,8 +63,8 @@
                     </div>
 
                     <div class="form-group wsus__input">
-                        <label for="inputState">Brand</label>
-                        <select id="inputState" class="form-control" name="brand">
+                        <label for="brand">Brand</label>
+                        <select id="brand" class="form-control" name="brand">
                             <option value="">Select</option>
                             @foreach ($brands as $brand)
                                 <option value="{{$brand->id}}">{{$brand->name}}</option>

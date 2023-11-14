@@ -27,7 +27,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="">Image <code>(Multiple image supported!)</code></label>
-                                <input type="file" name="image[]" class="form-control" multiple>
+                                <input type="file" required name="image[]" class="form-control" multiple>
                                 <input type="hidden" name="product" value="{{$product->id}}">
                             </div>
                             <button type="submit" class="btn btn-primary">Upload</button>

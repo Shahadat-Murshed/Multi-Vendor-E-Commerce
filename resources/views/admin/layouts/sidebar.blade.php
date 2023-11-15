@@ -45,7 +45,9 @@
             <li class="dropdown {{setActive([
                 'admin.brand.*',
                 'admin.products.*',
-                'admin.seller-products.*'
+                'admin.products-image-gallery.*',
+                'admin.products-variant.*',
+                'admin.products-variant-item.*',
             ])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
                     ><i class="fas fa-cubes"></i><span>Manage Products</span></a
@@ -55,21 +57,42 @@
                         'admin.brand.*'
                     ])}}">
                         <a class="nav-link" href="{{route('admin.brand.index')}}"
-                            ><i class="fab fa-apple mr-0"></i></i>Brands</a
+                            ><i class="fab fa-apple mr-0"></i>Brands</a
                         >
                     </li>
                     <li class="{{setActive([
-                        'admin.products.*'
+                        'admin.products.*',
+                        'admin.products-image-gallery.*',
+                        'admin.products-variant.*',
+                        'admin.products-variant-item.*',
+                        'admin.reviews.*',
                     ])}}">
                         <a class="nav-link" href="{{route('admin.products.index')}}"
-                            ><i class="fas fa-cube mr-0"></i></i>Products</a
+                            ><i class="fas fa-cube mr-0"></i>Products</a
                         >
                     </li>
+                </ul>
+            </li>
+            <li class="dropdown {{setActive([
+                'admin.seller-products.*',
+                'admin.seller-pending-products.*',
+            ])}}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
+                    ><i class="fas fa-cubes"></i><span>Manage Seller Products</span></a
+                >
+                <ul class="dropdown-menu">
                     <li class="{{setActive([
                         'admin.seller-products.*'
                     ])}}">
                         <a class="nav-link" href="{{route('admin.seller-products.index')}}"
-                            ><i class="fas fa-cube mr-0"></i></i>Seller Products</a
+                            ><i class="fas fa-cube mr-0"></i>Approved Products</a
+                        >
+                    </li>
+                    <li class="{{setActive([
+                        'admin.seller-pending-products.*'
+                    ])}}">
+                        <a class="nav-link" href="{{route('admin.seller-pending-products.index')}}"
+                            ><i class="fas fa-cube mr-0"></i>Pending Products</a
                         >
                     </li>
                 </ul>
@@ -79,7 +102,7 @@
                 'admin.vendor-profile.*'
             ])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
-                    ><i class="fas fa-warehouse"></i></i> <span>E-Commerce</span></a
+                    ><i class="fas fa-warehouse"></i><span>E-Commerce</span></a
                 >
                 <ul class="dropdown-menu">
                     <li class="{{setActive([

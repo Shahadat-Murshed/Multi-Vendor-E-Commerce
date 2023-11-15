@@ -160,7 +160,7 @@ class ProductController extends Controller
 
         toastr('Updated Successfully!', 'success');
 
-        return redirect()->route('admin.products.index');
+        return redirect()->back();
     }
 
     /**

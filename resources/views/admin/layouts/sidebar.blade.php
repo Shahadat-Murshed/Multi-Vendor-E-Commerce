@@ -21,22 +21,22 @@
                 
             ])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
-                    ><i class="fas fa-layer-group"></i> <span>Manage Categories</span></a
+                    ><i class="fas fa-layer-group"></i><span>Manage Categories</span></a
                 >
                 <ul class="dropdown-menu">
                     <li class="{{setActive(['admin.category.*'])}}">
                         <a class="nav-link" href="{{route('admin.category.index')}}"
-                            ><i class="fas fa-bars mr-0"></i>Category</a
+                            ><i class="fa-solid fa-bars"></i>Category</a
                         >
                     </li>
                     <li class="{{setActive(['admin.sub-category.*'])}}">
                         <a class="nav-link" href="{{route('admin.sub-category.index')}}"
-                            ><i class="fas fa-list-ul mr-0"></i></i></i>Sub Category</a
+                            ><i class="fa-solid fa-list-ul"></i>Sub Category</a
                         >
                     </li>
                     <li class="{{setActive(['admin.child-category.*'])}}">
                         <a class="nav-link" href="{{route('admin.child-category.index')}}"
-                            ><i class="fas fa-folder mr-0"></i>Child Category</a
+                            ><i class="fa-solid fa-list-check"></i>Child Category</a
                         >
                     </li>
                 </ul>
@@ -57,7 +57,7 @@
                         'admin.brand.*'
                     ])}}">
                         <a class="nav-link" href="{{route('admin.brand.index')}}"
-                            ><i class="fab fa-apple mr-0"></i>Brands</a
+                            ><i class="fa-brands fa-microsoft mr-0"></i></i>Brands</a
                         >
                     </li>
                     <li class="{{setActive([
@@ -68,7 +68,7 @@
                         'admin.reviews.*',
                     ])}}">
                         <a class="nav-link" href="{{route('admin.products.index')}}"
-                            ><i class="fas fa-cube mr-0"></i>Products</a
+                            ><i class="fa-solid fa-cube mr-0"></i>Products</a
                         >
                     </li>
                 </ul>
@@ -78,21 +78,21 @@
                 'admin.seller-pending-products.*',
             ])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
-                    ><i class="fas fa-cubes"></i><span>Manage Seller Products</span></a
+                    ><i class="fas fa-users"></i><span>Manage Seller Products</span></a
                 >
                 <ul class="dropdown-menu">
                     <li class="{{setActive([
                         'admin.seller-products.*'
                     ])}}">
                         <a class="nav-link" href="{{route('admin.seller-products.index')}}"
-                            ><i class="fas fa-cube mr-0"></i>Approved Products</a
+                            ><i class="fa-regular fa-square-check mr-0"></i></i>Approved Products</a
                         >
                     </li>
                     <li class="{{setActive([
                         'admin.seller-pending-products.*'
                     ])}}">
                         <a class="nav-link" href="{{route('admin.seller-pending-products.index')}}"
-                            ><i class="fas fa-cube mr-0"></i>Pending Products</a
+                            ><i class="fa-solid fa-spinner mr-0"></i>Pending Products</a
                         >
                     </li>
                 </ul>
@@ -102,7 +102,7 @@
                 'admin.vendor-profile.*'
             ])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
-                    ><i class="fas fa-warehouse"></i><span>E-Commerce</span></a
+                    ><i class="fa-solid fa-cart-plus"></i><span>E-Commerce</span></a
                 >
                 <ul class="dropdown-menu">
                     <li class="{{setActive([
@@ -119,14 +119,14 @@
                 'admin.slider.*'
             ])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
-                    ><i class="fas fa-window-maximize"></i> <span>Manage Website</span></a
+                    ><i class="fa-solid fa-window-restore"></i> <span>Manage Website</span></a
                 >
                 <ul class="dropdown-menu">
                     <li class="{{setActive([
                         'admin.slider.*'
                     ])}}">
                         <a class="nav-link" href="{{route('admin.slider.index')}}"
-                            ><i class="fas fa-image mr-0"></i>Slider</a
+                            ><i class="fa-regular fa-image mr-0"></i>Slider</a
                         >
                     </li>
                 </ul>

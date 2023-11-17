@@ -99,17 +99,26 @@
             </li>
 
             <li class="dropdown {{setActive([
-                'admin.vendor-profile.*'
+                'admin.flash-sale.*',
+                'admin.vendor-profile.*',
+                'admin.coupons.*',
             ])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
                     ><i class="fa-solid fa-cart-plus"></i><span>E-Commerce</span></a
                 >
                 <ul class="dropdown-menu">
                     <li class="{{setActive([
-                        'admin.vendor-profile.*'
+                        'admin.flash-sale.*'
                     ])}}">
                         <a class="nav-link" href="{{route('admin.flash-sale.index')}}"
-                            ><i class="fa-solid fa-bolt-lightning mr-0"></i></i>Flash Sale</a
+                            ><i class="fa-solid fa-bolt-lightning mr-0"></i>Flash Sale</a
+                        >
+                    </li>
+                    <li class="{{setActive([
+                        'admin.coupons.*'
+                    ])}}">
+                        <a class="nav-link" href="{{route('admin.coupons.index')}}"
+                            ><i class="fa-solid fa-gifts mr-0"></i>Coupons</a
                         >
                     </li>
                     <li class="{{setActive([

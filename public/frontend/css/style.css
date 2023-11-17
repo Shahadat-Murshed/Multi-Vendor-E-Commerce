@@ -651,6 +651,7 @@ header {
     background: #0b2c3d;
     background: #fff;
     box-shadow: rgb(100 100 111 / 20%) 0px 3px 15px 0;
+    z-index: 999999 !important;
 }
 
 .wsus_menu_category_bar {

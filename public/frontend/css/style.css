@@ -8627,6 +8627,9 @@ header .wsus__call_text a:hover {
     -ms-transition: all linear 0.3s ease;
     -o-transition: all linear 0.3s ease;
 }
+.wsus__new {
+    width: 80px;
+}
 
 .wsus__product_item:hover .wsus__new,
 .wsus__product_item:hover .wsus__minus {

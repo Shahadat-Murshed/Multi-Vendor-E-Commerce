@@ -109,14 +109,14 @@
                         'admin.vendor-profile.*'
                     ])}}">
                         <a class="nav-link" href="{{route('admin.flash-sale.index')}}"
-                            ><i class="fas fa-people-carry mr-0"></i>Flash Sale</a
+                            ><i class="fa-solid fa-bolt-lightning mr-0"></i></i>Flash Sale</a
                         >
                     </li>
                     <li class="{{setActive([
                         'admin.vendor-profile.*'
                     ])}}">
                         <a class="nav-link" href="{{route('admin.vendor-profile.index')}}"
-                            ><i class="fas fa-people-carry mr-0"></i>Vendor Profile</a
+                            ><i class="fa-solid fa-person-shelter mr-0 mb-1"></i>Vendor Profile</a
                         >
                     </li>
                 </ul>

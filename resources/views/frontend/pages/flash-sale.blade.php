@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('title')
-{{-- {{$settings->site_name}} || Flash Sale --}}
+{{$settings->site_name}} || Flash Sale
 @endsection
 
 @section('content')
@@ -97,9 +97,9 @@
                                 </p> --}}
                                 <a class="wsus__pro_name" href="{{route('product-detail', $product->slug)}}">{{$product->name}}</a>
                                 @if(checkDiscount($product))
-                                    <p class="wsus__price">{{$product->offer_price}} <del>{{$product->price}}</del></p>
+                                    <p class="wsus__price">{{$settings->currency_icon}}{{$product->offer_price}} <del>{{$settings->currency_icon}}{{$product->price}}</del></p>
                                 @else
-                                    <p class="wsus__price">{{$product->price}}</p>
+                                    <p class="wsus__price">{{$settings->currency_icon}}{{$product->price}}</p>
                                 @endif
                                 <form class="shopping-cart-form">
                                     <input type="hidden" name="product_id" value="{{$product->id}}">
@@ -108,7 +108,7 @@
                                         <select class="d-none" name="variants_items[]">
                                             @foreach ($variant->productVariantItems as $variantItem)
                                                 @if ($variantItem->status != 0)
-                                                    <option value="{{$variantItem->id}}" {{$variantItem->is_default == 1 ? 'selected' : ''}}>{{$variantItem->name}} (${{$variantItem->price}})</option>
+                                                    <option value="{{$variantItem->id}}" {{$variantItem->is_default == 1 ? 'selected' : ''}}>{{$variantItem->name}} ({{$settings->currency_icon}}{{$variantItem->price}})</option>
                                                 @endif
                                             @endforeach
                                         </select>
@@ -190,9 +190,9 @@
                                 <a class="title" href="#">{{$product->name}}</a>
                                 <p class="wsus__stock_area"><span class="in_stock">in stock</span> (167 item)</p>
                                 @if (checkDiscount($product))
-                                    <h4>{{$product->offer_price}} <del>{{$product->price}}</del></h4>
+                                    <h4>{{$settings->currency_icon}}{{$product->offer_price}} <del>{{$settings->currency_icon}}{{$product->price}}</del></h4>
                                 @else
-                                    <h4>{{$product->price}}</h4>
+                                    <h4>{{$settings->currency_icon}}{{$product->price}}</h4>
                                 @endif
                                 {{-- <p class="review">
                                     @php
@@ -235,7 +235,7 @@
                                     </div>
 
                                     <div class="wsus__quentity">
-                                        <h5>quentity :</h5>
+                                        <h5>quantity :</h5>
                                         <div class="select_number">
                                             <input class="number_area" name="qty" type="text" min="1" max="100" value="1" />
                                         </div>

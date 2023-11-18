@@ -1,5 +1,9 @@
 @extends('vendor.layouts.master')
 
+@section('title')
+  {{Auth::user()->name}} - Profile
+@endsection
+
 @section('content')
 <!--=============================
     DASHBOARD START

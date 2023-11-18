@@ -1,5 +1,7 @@
 @extends('vendor.layouts.master')
-
+@section('title')
+  {{Auth::user()->name}} - Vendor Dashboard
+@endsection
 @section('content')
 <section id="wsus__dashboard">
     <div class="container-fluid">

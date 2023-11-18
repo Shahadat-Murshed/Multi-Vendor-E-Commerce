@@ -1,5 +1,9 @@
 @extends('frontend.dashboard.layouts.master')
 
+@section('title')
+  {{Auth::user()->name}} - Edit Address
+@endsection
+
 @section('content')
 <section id="wsus__dashboard">
     <div class="container-fluid">

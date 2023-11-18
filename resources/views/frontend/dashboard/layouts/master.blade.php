@@ -3,10 +3,11 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="csrf-token" content="{{ csrf_token() }}" />  
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, target-densityDpi=device-dpi" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <title>One Shop || e-Commerce HTML Template</title>
+  <title>E-Commerce</title>
   <link rel="icon" type="image/png" href="{{asset('frontend/images')}}/favicon.png">
   <link rel="stylesheet" href="{{asset('frontend/css/all.min.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}">
@@ -38,7 +39,7 @@
   <div class="wsus__dashboard_menu">
     <div class="wsusd__dashboard_user">
       <img src="{{asset('frontend/images')}}/dashboard_user.jpg" alt="img" class="img-fluid">
-      <p>anik roy</p>
+      <p>{{Auth::user()->name}}</p>
     </div>
   </div>
   <!--=============================
@@ -67,40 +68,43 @@
 
 
   <!--jquery library js-->
-  <script src="{{asset('fronted/js/jquery-3.6.0.min.js')}}"></script>
+  <script src="{{asset('frontend/js/jquery-3.6.0.min.js')}}"></script>
   <!--bootstrap js-->
-  <script src="{{asset('fronted/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{asset('frontend/js/bootstrap.bundle.min.js')}}"></script>
   <!--font-awesome js-->
-  <script src="{{asset('fronted/js/Font-Awesome.js')}}"></script>
+  <script src="{{asset('frontend/js/Font-Awesome.js')}}"></script>
   <!--select2 js-->
-  <script src="{{asset('fronted/js/select2.min.js')}}"></script>
+  <script src="{{asset('frontend/js/select2.min.js')}}"></script>
   <!--slick slider js-->
-  <script src="{{asset('fronted/js/slick.min.js')}}"></script>
+  <script src="{{asset('frontend/js/slick.min.js')}}"></script>
   <!--simplyCountdown js-->
-  <script src="{{asset('fronted/js/simplyCountdown.js')}}"></script>
+  <script src="{{asset('frontend/js/simplyCountdown.js')}}"></script>
   <!--product zoomer js-->
-  <script src="{{asset('fronted/js/jquery.exzoom.js')}}"></script>
+  <script src="{{asset('frontend/js/jquery.exzoom.js')}}"></script>
   <!--nice-number js-->
-  <script src="{{asset('fronted/js/jquery.nice-number.min.js')}}"></script>
+  <script src="{{asset('frontend/js/jquery.nice-number.min.js')}}"></script>
   <!--counter js-->
-  <script src="{{asset('fronted/js/jquery.waypoints.min.js')}}"></script>
-  <script src="{{asset('fronted/js/jquery.countup.min.js')}}"></script>
+  <script src="{{asset('frontend/js/jquery.waypoints.min.js')}}"></script>
+  <script src="{{asset('frontend/js/jquery.countup.min.js')}}"></script>
   <!--add row js-->
-  <script src="{{asset('fronted/js/add_row_custon.js')}}"></script>
+  <script src="{{asset('frontend/js/add_row_custon.js')}}"></script>
   <!--multiple-image-video js-->
-  <script src="{{asset('fronted/js/multiple-image-video.js')}}"></script>
+  <script src="{{asset('frontend/js/multiple-image-video.js')}}"></script>
   <!--sticky sidebar js-->
-  <script src="{{asset('fronted/js/sticky_sidebar.js')}}"></script>
+  <script src="{{asset('frontend/js/sticky_sidebar.js')}}"></script>
   <!--price ranger js-->
-  <script src="{{asset('fronted/js/ranger_jquery-ui.min.js')}}"></script>
-  <script src="{{asset('fronted/js/ranger_slider.js')}}"></script>
+  <script src="{{asset('frontend/js/ranger_jquery-ui.min.js')}}"></script>
+  <script src="{{asset('frontend/js/ranger_slider.js')}}"></script>
   <!--isotope js-->
-  <script src="{{asset('fronted/js/isotope.pkgd.min.js')}}"></script>
+  <script src="{{asset('frontend/js/isotope.pkgd.min.js')}}"></script>
   <!--venobox js-->
-  <script src="{{asset('fronted/js/venobox.min.js')}}"></script>
+  <script src="{{asset('frontend/js/venobox.min.js')}}"></script>
   <!--classycountdown js-->
-  <script src="{{asset('fronted/js/jquery.classycountdown.js')}}"></script>
+  <script src="{{asset('frontend/js/jquery.classycountdown.js')}}"></script>
+  <!--toastr js-->
   <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+  <!--sweet alert js-->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   
 
   <!--main/custom js-->
@@ -116,6 +120,63 @@
       @endforeach
     @endif
   </script>
+  <script>
+    $(document).ready(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+
+
+        $('body').on('click', '.delete-item', function(event){
+            event.preventDefault();
+
+            let deleteUrl = $(this).attr('href');
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                if (result.isConfirmed) {
+
+                    $.ajax({
+                        type: 'DELETE',
+                        url: deleteUrl,
+
+                        success: function(data){
+
+                            if(data.status == 'success'){
+                                Swal.fire(
+                                    'Deleted!',
+                                    data.message,
+                                    'success'
+                                )
+                                window.location.reload();
+                            }else if (data.status == 'error'){
+                                Swal.fire(
+                                    'Cant Delete',
+                                    data.message,
+                                    'error'
+                                )
+                            }
+                        },
+                        error: function(xhr, status, error){
+                            console.log(error);
+                        }
+                    })
+                }
+            })
+        })
+
+    })
+  </script>
+  @stack('scripts')
 </body>
 
 </html>

@@ -2,8 +2,8 @@
 
 namespace App\DataTables;
 
-use App\Models\Coupon;
 use App\Models\GeneralSetting;
+use App\Models\ShippingRule;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Yajra\DataTables\EloquentDataTable;
 use Yajra\DataTables\Html\Builder as HtmlBuilder;
@@ -13,8 +13,15 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class CouponDataTable extends DataTable
+class ShippingRuleDataTable extends DataTable
 {
+    protected $currencyIcon = '';
+
+    public function __construct()
+    {
+        $this->currencyIcon = GeneralSetting::first()->currency_icon;
+    }
+
     /**
      * Build the DataTable class.
      *
@@ -24,13 +31,10 @@ class CouponDataTable extends DataTable
     {
         return (new EloquentDataTable($query))
             ->addColumn('action', function($query){
-                $editBtn = "<a href='".route('admin.coupons.edit', $query->id)."' class='btn btn-primary'><i class='far fa-edit'></i></a>";
-                $deleteBtn = "<a href='".route('admin.coupons.destroy', $query->id)."' class='btn btn-danger ml-2 delete-item'><i class='far fa-trash-alt'></i></a>";
+                $editBtn = "<a href='".route('admin.shipping-rule.edit', $query->id)."' class='btn btn-primary'><i class='far fa-edit'></i></a>";
+                $deleteBtn = "<a href='".route('admin.shipping-rule.destroy', $query->id)."' class='btn btn-danger ml-2 delete-item'><i class='far fa-trash-alt'></i></a>";
 
                 return $editBtn.$deleteBtn;
-            })
-            ->addColumn('discount', function($query){
-                return GeneralSetting::first()->currency_icon.$query->discount;
             })
             ->addColumn('status', function($query){
                 if($query->status == 1){
@@ -46,14 +50,31 @@ class CouponDataTable extends DataTable
                 }
                 return $button;
             })
-            ->rawColumns(['action', 'status'])
+            ->addColumn('type', function($query){
+                if($query->type === 'min_cost'){
+                    return '<i style="width: 170px" class="badge badge-primary">Minimum Order Amount</i>';
+                }else {
+                    return '<i style="width: 170px; color: black" class="badge badge-success">Flat Amount</i>';
+                }
+            })
+            ->addColumn('minimum_order', function($query){
+                if($query->type === 'min_cost'){
+                    return $this->currencyIcon.$query->min_cost;
+                }else {
+                    return $this->currencyIcon.'0';
+                }
+            })
+            ->addColumn('cost', function($query){
+                return $this->currencyIcon.$query->cost;
+            })
+            ->rawColumns(['status', 'action', 'type'])
             ->setRowId('id');
     }
 
     /**
      * Get the query source of dataTable.
      */
-    public function query(Coupon $model): QueryBuilder
+    public function query(ShippingRule $model): QueryBuilder
     {
         return $model->newQuery();
     }
@@ -64,11 +85,11 @@ class CouponDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('coupon-table')
+                    ->setTableId('shippingrule-table')
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     //->dom('Bfrtip')
-                    ->orderBy(0)
+                    ->orderBy(1)
                     ->selectStyleSingle()
                     ->buttons([
                         Button::make('excel'),
@@ -87,18 +108,17 @@ class CouponDataTable extends DataTable
     {
         return [
 
-            Column::make('id')->addClass('align-middle'),
-            Column::make('name')->addClass('align-middle'),
-            Column::make('discount_type')->addClass('align-middle'),
-            Column::make('discount')->addClass('align-middle'),
-            Column::make('start_date')->addClass('align-middle'),
-            Column::make('end_date')->addClass('align-middle'),
-            Column::make('status')->addClass('align-middle'),
-            Column::computed('action')
+            Column::make('id'),
+            Column::make('name')->addClass('text-center')->addClass('align-middle'),
+            Column::make('type')->addClass('text-center')->addClass('align-middle'),
+            Column::make('minimum_order')->addClass('text-center')->addClass('align-middle'),
+            Column::make('cost')->addClass('text-center')->addClass('align-middle'),
+            Column::make('status')->addClass('text-center')->addClass('align-middle'),
+            Column::computed('action')->addClass('align-middle')
             ->exportable(false)
             ->printable(false)
-            ->width(200)
-            ->addClass('text-center')->addClass('align-middle'),
+            ->width(300)
+            ->addClass('text-center'),
         ];
     }
 
@@ -107,6 +127,6 @@ class CouponDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'Coupon_' . date('YmdHis');
+        return 'ShippingRule_' . date('YmdHis');
     }
 }

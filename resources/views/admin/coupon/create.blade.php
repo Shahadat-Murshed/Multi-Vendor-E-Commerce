@@ -88,6 +88,7 @@
                             </select>
                         </div>
                         <button type="submmit" class="btn btn-primary">Create</button>
+                        <a class="btn btn-danger" href="{{ url()->previous() }}">Cancel</a>
                     </form>
                   </div>
 

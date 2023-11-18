@@ -5,6 +5,11 @@
         <section class="section">
           <div class="section-header">
             <h1>Coupon</h1>
+            <div class="section-header-breadcrumb">
+              <div class="breadcrumb-item active"><a href="{{route('admin.dashboard')}}">Dashboard</a></div>
+              <div class="breadcrumb-item"><a href="{{route('admin.coupons.index')}}"> All Coupons</a></div>
+              <div class="breadcrumb-item">{{$coupon->name}}</div>
+            </div>
           </div>
 
           <div class="section-body">
@@ -13,7 +18,7 @@
               <div class="col-12">
                 <div class="card">
                   <div class="card-header">
-                    <h4>Update Coupon</h4>
+                    <h4>Update "{{$coupon->name}}"</h4>
 
                   </div>
                   <div class="card-body">
@@ -83,6 +88,7 @@
                             </select>
                         </div>
                         <button type="submmit" class="btn btn-primary">Update</button>
+                        <a class="btn btn-danger" href="{{ url()->previous() }}">Cancel</a>
                     </form>
                   </div>
 

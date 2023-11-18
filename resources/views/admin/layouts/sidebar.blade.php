@@ -100,8 +100,9 @@
 
             <li class="dropdown {{setActive([
                 'admin.flash-sale.*',
-                'admin.vendor-profile.*',
                 'admin.coupons.*',
+                'admin.shipping-rule.*',
+                'admin.vendor-profile.*',
             ])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
                     ><i class="fa-solid fa-cart-plus"></i><span>E-Commerce</span></a
@@ -119,6 +120,13 @@
                     ])}}">
                         <a class="nav-link" href="{{route('admin.coupons.index')}}"
                             ><i class="fa-solid fa-gifts mr-0"></i>Coupons</a
+                        >
+                    </li>
+                    <li class="{{setActive([
+                        'admin.shipping-rule.*'
+                    ])}}">
+                        <a class="nav-link" href="{{route('admin.shipping-rule.index')}}"
+                            ><i class="fa-solid fa-truck mr-0"></i>Shipping Rules</a
                         >
                     </li>
                     <li class="{{setActive([

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Frontend\FlashSaleController;
 use App\Http\Controllers\Backend\VendorController;
+use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\FrontendProductController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\UserAddressController;
@@ -42,6 +43,9 @@ Route::get('flash-sale', [FlashSaleController::class, 'index'])->name('flash-sal
 Route::get('products', [FrontendProductController::class, 'productsIndex'])->name('products.index');
 Route::get('product-detail/{slug}', [FrontendProductController::class, 'showProduct'])->name('product-detail');
 Route::get('change-product-list-view', [FrontendProductController::class, 'chageListView'])->name('change-product-list-view');
+
+/** Cart routes */
+Route::post('add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
 
 Route::group(['middleware'=> ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function(){
     Route::get('dashboard', [UserDashboardController::class, 'index'])->name('dashboard');

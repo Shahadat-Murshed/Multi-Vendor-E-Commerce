@@ -654,3 +654,30 @@
     ==============================-->
 @endsection
 
+@push('scripts')
+    <script>
+       $(document).ready(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $('.shopping-cart-form').on('submit', function(e){
+            e.preventDefault();
+            let formData = $(this).serialize();
+            console.log(formData);
+            $.ajax({
+                method: 'POST',
+                data: 'formData',
+                url: "{{route('add-to-cart')}}",
+                success: function(data){
+
+                },
+                error: function(data){
+
+                }
+            })
+        })
+       }) 
+    </script>
+@endpush

@@ -18,10 +18,11 @@ class CartController extends Controller
     public function cartDetails()
     {
         $cartItems = Cart::content();
-
+        // dd($cartItems);
+        
         if(count($cartItems) === 0){
             Session::forget('coupon');
-            toastr('Please add some products in your cart for view the cart page', 'warning', 'Cart is empty!');
+            toastr('', 'warning', 'Cart is empty!');
             return redirect()->route('home');
         }
 

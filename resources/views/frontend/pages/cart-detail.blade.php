@@ -97,9 +97,9 @@
                                             </div>
                                         </td>
 
-                                        {{-- <td class="wsus__pro_icon">
+                                        <td class="wsus__pro_icon">
                                             <a href="{{route('cart.remove-product', $item->rowId)}}"><i class="far fa-times"></i></a>
-                                        </td> --}}
+                                        </td>
                                     </tr>
                                     @endforeach
 
@@ -166,7 +166,7 @@
 @endsection
 
 @push('scripts')
-{{-- <script>
+<script>
     $(document).ready(function(){
         $.ajaxSetup({
             headers: {
@@ -294,46 +294,9 @@
 
         // applay coupon on cart
 
-        $('#coupon_form').on('submit', function(e){
-            e.preventDefault();
-            let formData = $(this).serialize();
-            $.ajax({
-                method: 'GET',
-                url: "{{ route('apply-coupon') }}",
-                data: formData,
-                success: function(data) {
-                   if(data.status === 'error'){
-                    toastr.error(data.message)
-                   }else if (data.status === 'success'){
-                    calculateCouponDescount()
-                    toastr.success(data.message)
-                   }
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            })
-
-        })
-
-        // calculate discount amount
-        function calculateCouponDescount(){
-            $.ajax({
-                method: 'GET',
-                url: "{{ route('coupon-calculation') }}",
-                success: function(data) {
-                    if(data.status === 'success'){
-                        $('#discount').text('{{$settings->currency_icon}}'+data.discount);
-                        $('#cart_total').text('{{$settings->currency_icon}}'+data.cart_total);
-                    }
-                },
-                error: function(data) {
-                    console.log(data);
-                }
-            })
-        }
+        
 
 
     })
-</script> --}}
+</script>
 @endpush

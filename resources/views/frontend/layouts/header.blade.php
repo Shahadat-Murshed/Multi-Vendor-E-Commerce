@@ -54,7 +54,7 @@
                         <li>
                             <a class="wsus__cart_icon" href="#"
                                 ><i class="fal fa-shopping-bag"></i
-                                ><span>04</span></a
+                                ><span id="cart-count">{{Cart::content()->count()}}</span></a
                             >
                         </li>
                     </ul>

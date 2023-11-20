@@ -234,7 +234,7 @@
                             </p> --}}
                            <p class="description">{!! $product->short_description !!}</p>
 
-                            <form class="shopping-cart-form">
+                            <form id="cart-form" class="shopping-cart-form">
                                 <div class="wsus__selectbox">
                                     <div class="row">
                                         <input type="hidden" name="product_id" value="{{$product->id}}">
@@ -668,7 +668,7 @@
             console.log(formData);
             $.ajax({
                 method: 'POST',
-                data: 'formData',
+                data: jQuery('#cart-form').serialize(),
                 url: "{{route('add-to-cart')}}",
                 success: function(data){
 

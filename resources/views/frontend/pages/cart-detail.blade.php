@@ -97,9 +97,9 @@
                                             </div>
                                         </td>
 
-                                        <td class="wsus__pro_icon">
+                                        {{-- <td class="wsus__pro_icon">
                                             <a href="{{route('cart.remove-product', $item->rowId)}}"><i class="far fa-times"></i></a>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                     @endforeach
 
@@ -117,7 +117,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3">
+                {{-- <div class="col-xl-3">
                     <div class="wsus__cart_list_footer_button" id="sticky_sidebar">
                         <h6>total cart</h6>
                         <p>subtotal: <span id="sub_total">{{$settings->currency_icon}}{{getCartTotal()}}</span></p>
@@ -132,7 +132,7 @@
                         <a class="common_btn mt-1 w-100 text-center" href="{{route('home')}}"><i
                                 class="fab fa-shopify"></i> Keep Shopping</a>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </section>
@@ -140,22 +140,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-xl-6 col-lg-6">
-                    <div class="wsus__single_banner_content">
+                    {{-- <div class="wsus__single_banner_content">
                             @if ($cartpage_banner_section->banner_one->status == 1)
                             <a href="{{$cartpage_banner_section->banner_one->banner_url}}">
                                 <img class="img-gluid" src="{{asset($cartpage_banner_section->banner_one->banner_image)}}" alt="">
                             </a>
                             @endif
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-xl-6 col-lg-6">
-                    <div class="wsus__single_banner_content single_banner_2">
+                    {{-- <div class="wsus__single_banner_content single_banner_2">
                             @if ($cartpage_banner_section->banner_two->status == 1)
                             <a href="{{$cartpage_banner_section->banner_two->banner_url}}">
                                 <img class="img-gluid" src="{{asset($cartpage_banner_section->banner_two->banner_image)}}" alt="">
                             </a>
                             @endif
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
@@ -166,7 +166,7 @@
 @endsection
 
 @push('scripts')
-<script>
+{{-- <script>
     $(document).ready(function(){
         $.ajaxSetup({
             headers: {
@@ -335,5 +335,5 @@
 
 
     })
-</script>
+</script> --}}
 @endpush

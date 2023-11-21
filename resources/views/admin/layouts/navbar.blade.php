@@ -9,7 +9,7 @@
         </ul>
     </form>
     <ul class="navbar-nav navbar-right">
-        <li class="dropdown dropdown-list-toggle">
+        {{-- <li class="dropdown dropdown-list-toggle">
             <a
                 href="#"
                 data-toggle="dropdown"
@@ -185,7 +185,7 @@
                     ></a>
                 </div>
             </div>
-        </li>
+        </li> --}}
         <li class="dropdown">
             <a
                 href="#"
@@ -198,7 +198,7 @@
                     class="rounded-circle mr-1"
                 />
                 <div class="d-sm-none d-lg-inline-block">
-                    Hi, Ujang Maman
+                    Hi, {{Auth::user()->name}}
                 </div></a
             >
             <div class="dropdown-menu dropdown-menu-right">

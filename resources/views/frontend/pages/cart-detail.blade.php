@@ -70,7 +70,7 @@
                                     @foreach ($cartItems as $item)
                                     <tr class="d-flex">
                                         <td class="wsus__pro_img"><img src="{{asset($item->options->image)}}" alt="product"
-                                                class="img-fluid w-100">
+                                                class="img-fluid w-100 ms-3">
                                         </td>
 
                                         <td class="wsus__pro_name">

@@ -186,7 +186,7 @@
                                             <i class="fas fa-play"></i>
                                         </a>
                                     @endif
-                                    <ul class='exzoom_img_ul'>
+                                    <ul style="background: #640263;" class='exzoom_img_ul'>
                                         <li><img class="zoom ing-fluid w-100" src="{{asset($product->thumb_image)}}" alt="product"></li>
                                         @foreach ($product->productImageGalleries as $productImage)
                                             <li><img class="zoom ing-fluid w-100" src="{{asset($productImage->image)}}" alt="product"></li>
@@ -402,7 +402,7 @@
                                                         </div> --}}
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-4 col-lg-5 mt-4 mt-lg-0">
+                                                {{-- <div class="col-xl-4 col-lg-5 mt-4 mt-lg-0">
                                                     @auth
                                                     @php
                                                         $isBrought = false;
@@ -465,7 +465,7 @@
                                                     @endif
                                                     @endauth
 
-                                                </div>
+                                                </div> --}}
                                             </div>
                                         </div>
                                     </div>

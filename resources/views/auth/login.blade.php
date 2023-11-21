@@ -74,7 +74,7 @@
                                             <a class="forget_p" href="{{ route('password.request') }}">forget password ?</a>
                                         </div>
 
-                                        <button class="common_btn" type="submit">login</button>
+                                        <button style="background: #724e91" class="common_btn" type="submit">login</button>
                                         {{-- <p class="social_text">Sign in with social account</p>
                                         <ul class="wsus__login_link">
                                             <li><a href="#"><i class="fab fa-google"></i></a></li>
@@ -106,7 +106,7 @@
                                             <i class="fas fa-key"></i>
                                             <input id="passaword_confirmation" type="password" name="password_confirmation" placeholder="Confirm Password">
                                         </div>
-                                        <button class="common_btn mt-4" type="submit">signup</button>
+                                        <button style="background: #724e91" class="common_btn mt-4" type="submit">signup</button>
                                     </form>
                                 </div>
                             </div>

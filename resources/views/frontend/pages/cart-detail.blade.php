@@ -38,7 +38,7 @@
                 <div class="col-xl-9">
                     <div class="wsus__cart_list">
                         <div class="table-responsive">
-                            <table>
+                            <table style="background: #640263; color:white">
                                 <tbody>
                                     <tr class="d-flex">
                                         <th class="wsus__pro_img">
@@ -64,7 +64,7 @@
 
 
                                         <th class="wsus__pro_icon">
-                                            <a href="#" class="common_btn clear_cart">clear cart</a>
+                                            <a style="background: #724e91" href="#" class="common_btn clear_cart">clear cart</a>
                                         </th>
                                     </tr>
                                     @foreach ($cartItems as $item)
@@ -91,9 +91,9 @@
 
                                         <td class="wsus__pro_select">
                                             <div class="product_qty_wrapper">
-                                                <button class="btn btn-danger product-decrement">-</button>
+                                                <button class="btn product-decrement">-</button>
                                                 <input class="product-qty" data-rowid="{{$item->rowId}}" type="text" min="1" max="100" value="{{$item->qty}}" readonly />
-                                                <button class="btn btn-success product-increment">+</button>
+                                                <button class="btn product-increment">+</button>
                                             </div>
                                         </td>
 

@@ -43,7 +43,7 @@
                         <div class="wsus__section_header rounded-0">
                             <h3>flash sell</h3>
                             <div class="wsus__offer_countdown">
-                                <span class="end_text">ends time :</span>
+                                <span class="end_text">ends after :</span>
                                 <div class="simply-countdown simply-countdown-one"></div>
                             </div>
                         </div>

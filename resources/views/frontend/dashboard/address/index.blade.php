@@ -29,14 +29,14 @@
                       <li><span>address :</span> {{$address->address}}</li>
                     </ul>
                     <div class="wsus__address_btn">
-                      <a href="{{route('user.address.edit', $address->id)}}" class="edit"><i class="far fa-edit"></i> edit</a>
-                      <a href="{{route('user.address.destroy', $address->id)}}" class="del delete-item"><i class="far fa-trash-alt"></i> delete</a>
+                      <a href="{{route('user.address.edit', $address->id)}}" class="edit custom_btn"><i class="far fa-edit"></i> edit</a>
+                      <a href="{{route('user.address.destroy', $address->id)}}" class="del delete-item custom_btn"><i class="far fa-trash-alt"></i> delete</a>
                     </div>
                   </div>
                 </div>
                 @endforeach
                 <div class="col-12">
-                  <a href="{{route('user.address.create')}}" class="add_address_btn common_btn"><i class="far fa-plus"></i>
+                  <a href="{{route('user.address.create')}}" class="add_address_btn common_btn custom_btn"><i class="far fa-plus"></i>
                     add new address</a>
                 </div>
               </div>

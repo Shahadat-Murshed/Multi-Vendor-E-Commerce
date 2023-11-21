@@ -71,7 +71,7 @@
                                         </div>
                                         <div class="col-xl-12">
                                             <button
-                                                class="common_btn mb-4 mt-2"
+                                                class="common_btn custom_btn mb-4 mt-2"
                                                 type="submit"
                                             >
                                                 Update Profile
@@ -129,7 +129,7 @@
                                         </div>    
                                         <div class="col-xl-12">
                                             <button
-                                                class="common_btn"
+                                                class="common_btn custom_btn"
                                                 type="submit"
                                             >
                                                 Change Password

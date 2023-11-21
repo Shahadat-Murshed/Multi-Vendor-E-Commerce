@@ -17,7 +17,7 @@
           <div class="dashboard_content mt-2 mt-md-0">
             <h3><i class="far fa-user"></i> Products</h3>
             <div class="create_button">
-                <a href="{{route('vendor.products.create')}}" class="btn btn-primary"><i style="font-size: 14px" class="fas fa-plus mr-2"></i> Create Product</a>
+                <a href="{{route('vendor.products.create')}}" class="btn btn-primary custom_btn"><i style="font-size: 14px" class="fas fa-plus mr-2"></i> Create Product</a>
             </div>
             <div class="wsus__dashboard_profile">
               <div class="wsus__dash_pro_area">

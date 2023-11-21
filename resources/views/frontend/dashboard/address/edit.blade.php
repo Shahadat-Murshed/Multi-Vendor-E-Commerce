@@ -81,7 +81,8 @@
 
 
                   <div class="col-xl-6">
-                    <button type="submit" class="common_btn">Update</button>
+                    <button type="submit" class="common_btn custom_btn">Update</button>
+                    <a href="{{ url()->previous() }}" class=" btn common_btn custom_btn">Cancel</a>
                   </div>
                 </div>
               </form>

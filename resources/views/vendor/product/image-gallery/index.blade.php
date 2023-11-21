@@ -26,7 +26,7 @@
                         <input type="file" required name="image[]" class="form-control" multiple>
                         <input type="hidden" name="product" value="{{$product->id}}">
                     </div>
-                    <button type="submit" class="btn btn-primary">Upload</button>
+                    <button type="submit" class="btn btn-primary custom_btn">Upload</button>
                 </form>
               </div>
             </div>

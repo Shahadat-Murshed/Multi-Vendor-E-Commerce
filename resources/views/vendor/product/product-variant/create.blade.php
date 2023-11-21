@@ -35,7 +35,7 @@
                           <option value="0">Inactive</option>
                         </select>
                     </div>
-                    <button type="submmit" class="btn btn-primary">Create</button>
+                    <button type="submmit" class="btn btn-primary custom_btn">Create</button>
                 </form>
               </div>
             </div>

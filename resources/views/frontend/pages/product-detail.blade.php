@@ -662,6 +662,9 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+
+        fetchSidebarCartProducts();
+        
         $('.shopping-cart-form').on('submit', function(e){
             e.preventDefault();
             let formData = $(this).serialize();
@@ -672,6 +675,7 @@
                 url: "{{route('add-to-cart')}}",
                 success: function(data){
                     getCartCount();
+                    fetchSidebarCartProducts();
                     toastr.success(data.message);
                 },
                 error: function(data){
@@ -693,6 +697,48 @@
                 }
             })
         }
-    }) 
+
+        function fetchSidebarCartProducts(){
+            $.ajax({
+                method: 'GET',
+                url: "{{route('cart-products')}}",
+                success: function(data){
+                    console.log(data);
+                    $('.mini_cart_wrapper').html("");
+                    var html = '';
+                    for(let item in data){
+                        console.log(data[item]);
+                        let product = data[item];
+                        html+=
+                            `<li>
+                                <div class="wsus__cart_img">
+                                    <a href="{{url('product-detail')}}/${product.options.slug}">
+                                        <img
+                                            src="{{asset('/')}}${product.options.image}"
+                                            alt="product"
+                                            class="img-fluid w-100"
+                                        />
+                                    </a>
+                                    <a class="wsis__del_icon remove_sidebar_product" href="" data-rowID="${product.rowId}"
+                                        ><i class="fas fa-minus-circle"></i
+                                    ></a>
+                                </div>
+                                <div class="wsus__cart_text">
+                                    <a style="color: black" class="wsus__cart_title" href="{{url('product-detail')}}/${product.options.slug}">
+                                        ${product.name}
+                                    </a>
+                                    <p>{{$settings->currency_icon}}${product.price}</p>
+                                </div>
+                            </li>`
+                                    
+                    }
+                    $('.mini_cart_wrapper').html(html);
+                },
+                error: function(data){
+                    
+                }
+            })
+        }
+    })
     </script>
 @endpush

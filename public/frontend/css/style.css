@@ -519,7 +519,7 @@ header {
 }
 
 .wsus__mini_cart h4 span:hover {
-    background: #08c;
+    background: #640263;
 }
 
 .wsus__mini_cart ul {
@@ -552,6 +552,7 @@ header {
     border-radius: 3px;
     border: none;
     box-shadow: rgb(0 0 0 / 16%) 0px 1px 4px;
+    object-fit: cover;
 }
 
 .wsus__mini_cart .wsus__cart_img img {
@@ -8621,6 +8622,10 @@ header .wsus__call_text a:hover {
 
 .wsis__del_icon {
     opacity: 0;
+}
+
+.wsis__del_icon:hover {
+    color: #724e91;
 }
 
 .wsus__mini_cart ul li:hover .wsis__del_icon {

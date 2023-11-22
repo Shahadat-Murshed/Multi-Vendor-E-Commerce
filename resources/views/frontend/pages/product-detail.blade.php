@@ -729,7 +729,7 @@
                     $('.mini_cart_wrapper').html(html);
                 },
                 error: function(data){
-                    
+                    console.log(data);
                 }
             })
         }

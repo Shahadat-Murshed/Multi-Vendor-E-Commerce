@@ -1281,6 +1281,7 @@ PRODUCT MODAL VIEW START
     overflow-y: scroll;
     scrollbar-width: none;
     padding-left: 25px;
+    background: black;
 }
 
 .modal_slider_img {
@@ -1340,9 +1341,9 @@ PRODUCT MODAL VIEW START
 .modal_slider .prv_arr,
 .modal_slider .nxt_arr {
     position: absolute;
-    top: 50%;
+    top: 35%;
     left: 5px;
-    background: #08c;
+    background: #724e91;
     width: 35px;
     height: 35px;
     z-index: 1;
@@ -1359,7 +1360,26 @@ PRODUCT MODAL VIEW START
     font-size: 15px;
     cursor: pointer;
 }
-
+.select2-container--default .select2-selection--single {
+    background: none;
+}
+.select2-container--default .select2-results__option--selected {
+    background: #724e91;
+}
+.select2-container--default
+    .select2-results__option--highlighted.select2-results__option--selectable {
+    background: #724e91;
+    color: white;
+}
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    background: black;
+    color: white;
+}
+.select2-results__option--selectable {
+    cursor: pointer;
+    background: black;
+    color: white;
+}
 .modal_slider .nxt_arr {
     left: auto;
     right: 15px;

@@ -662,13 +662,10 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-        fetchSidebarCartProducts();
         
         $('.shopping-cart-form').on('submit', function(e){
             e.preventDefault();
             let formData = $(this).serialize();
-            console.log(formData);
             $.ajax({
                 method: 'POST',
                 data: jQuery('#cart-form').serialize(),
@@ -690,7 +687,6 @@
                 url: "{{route('cart-count')}}",
                 success: function(data){
                     $('#cart-count').text(data);
-                    console.log(data);
                 },
                 error: function(data){
                     
@@ -703,14 +699,12 @@
                 method: 'GET',
                 url: "{{route('cart-products')}}",
                 success: function(data){
-                    console.log(data);
                     $('.mini_cart_wrapper').html("");
                     var html = '';
                     for(let item in data){
-                        console.log(data[item]);
                         let product = data[item];
                         html+=
-                            `<li>
+                            `<li id="mini_cart_${product.rowId}">
                                 <div class="wsus__cart_img">
                                     <a href="{{url('product-detail')}}/${product.options.slug}">
                                         <img
@@ -719,7 +713,7 @@
                                             class="img-fluid w-100"
                                         />
                                     </a>
-                                    <a class="wsis__del_icon remove_sidebar_product" href="" data-rowID="${product.rowId}"
+                                    <a class="wsis__del_icon remove_sidebar_product" href="" data-id="${product.rowId}"
                                         ><i class="fas fa-minus-circle"></i
                                     ></a>
                                 </div>
@@ -739,6 +733,31 @@
                 }
             })
         }
+
+        $('body').on('click', '.remove_sidebar_product', function(e){
+            e.preventDefault();
+            let rowId = $(this).data('id');
+            $.ajax({
+                method: 'POST',
+                url: "{{route('cart.remove-sidebar-product')}}",
+                data: {
+                    rowId: rowId
+                },
+                success: function(data){
+                    let productId = '#mini_cart_'+rowId;
+                    $(productId).remove();
+                    if($('.mini_cart_wrapper').find('li').length == 0){
+                        $('.mini_cart_actions').addClass('d-none');
+                        $('.mini_cart_wrapper').html('<li class="text-center" style="color: black">Cart is Empty</li>')
+                    }
+                    getCartCount();
+                    toastr.success(data.message);
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            })
+        })
     })
     </script>
 @endpush

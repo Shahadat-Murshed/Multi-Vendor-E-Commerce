@@ -16,7 +16,7 @@
                         <h4>cart View</h4>
                         <ul>
                             <li><a href="#">home</a></li>
-                            <li><a href="#">peoduct</a></li>
+                            <li><a href="#">product</a></li>
                             <li><a href="#">cart view</a></li>
                         </ul>
                     </div>
@@ -174,7 +174,7 @@
             }
         });
 
-        // incriment product quantity
+        // increment product quantity
         $('.product-increment').on('click', function(){
             let input = $(this).siblings('.product-qty');
             let quantity = parseInt(input.val()) + 1;
@@ -256,9 +256,9 @@
                     text: "This action will clear your cart!",
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes, clear it!'
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#724e91', 
+                    confirmButtonText: 'Clear it!'
                     }).then((result) => {
                     if (result.isConfirmed) {
 

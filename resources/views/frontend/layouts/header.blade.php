@@ -77,13 +77,13 @@
                         <a class="wsis__del_icon remove_sidebar_product" data-id="{{$sidebarProduct->rowId}}" href="#" ><i class="fas fa-minus-circle"></i></a>
                     </div>
                     <div class="wsus__cart_text">
-                        <a class="wsus__cart_title" href="{{route('product-detail', $sidebarProduct->options->slug)}}">{{$sidebarProduct->name}}</a>
+                        <a style="color:black" class="wsus__cart_title" href="{{route('product-detail', $sidebarProduct->options->slug)}}">{{$sidebarProduct->name}}</a>
                         <p>
                             {{$settings->currency_icon}}{{$sidebarProduct->price}}
                         </p>
-                        <small>Variants total: {{$settings->currency_icon}}{{$sidebarProduct->options->variants_total}}</small>
+                        <small style="color:black">Quantity: {{$sidebarProduct->qty}}</small>
                         <br>
-                        <small>Qty: {{$sidebarProduct->qty}}</small>
+                        <small style="color:black">Total: {{$settings->currency_icon.($sidebarProduct->price + $sidebarProduct->options->variants_total) * $sidebarProduct->qty}}</small>
                     </div>
                 </li>
             @endforeach
@@ -92,7 +92,7 @@
             @endif
         </ul>
         <div class="mini_cart_actions {{Cart::content()->count() == 0 ? 'd-none' : ''}}">
-            <h5>sub total <span>$3540</span></h5>
+            <h5 style="color: black">sub total <span id="mini_cart_subtotal"></span></h5>
             <div class="wsus__minicart_btn_area">
                 <a class="common_btn" href="{{route('cart-details')}}">view cart</a>
                 <a class="common_btn" href="check_out.html">checkout</a>

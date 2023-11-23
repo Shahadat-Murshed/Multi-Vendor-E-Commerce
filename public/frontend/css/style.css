@@ -521,7 +521,10 @@ header {
 .wsus__mini_cart h4 span:hover {
     background: #640263;
 }
-
+.swal2-show {
+    background: #640263;
+    color: white;
+}
 .wsus__mini_cart ul {
     display: block;
     overflow-y: auto !important;

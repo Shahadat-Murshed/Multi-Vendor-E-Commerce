@@ -662,7 +662,7 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        
+        getSidebarCartSubtotal();
         $('.shopping-cart-form').on('submit', function(e){
             e.preventDefault();
             let formData = $(this).serialize();
@@ -673,6 +673,7 @@
                 success: function(data){
                     getCartCount();
                     fetchSidebarCartProducts();
+                    $('.mini_cart_actions').removeClass('d-none');
                     toastr.success(data.message);
                 },
                 error: function(data){
@@ -722,11 +723,16 @@
                                         ${product.name}
                                     </a>
                                     <p>{{$settings->currency_icon}}${product.price}</p>
+                                    <small style="color:black">Quantity: ${product.qty} </small>
+                                    <br>
+                                    <small style="color:black">Total: {{$settings->currency_icon}}${((product.price + product.options.variants_total) * product.qty)}</small>
                                 </div>
                             </li>`
                                     
                     }
                     $('.mini_cart_wrapper').html(html);
+
+                    getSidebarCartSubtotal();
                 },
                 error: function(data){
                     console.log(data);
@@ -746,6 +752,7 @@
                 success: function(data){
                     let productId = '#mini_cart_'+rowId;
                     $(productId).remove();
+                    getSidebarCartSubtotal();
                     if($('.mini_cart_wrapper').find('li').length == 0){
                         $('.mini_cart_actions').addClass('d-none');
                         $('.mini_cart_wrapper').html('<li class="text-center" style="color: black">Cart is Empty</li>')
@@ -758,6 +765,20 @@
                 }
             })
         })
+
+        // Get Sidebar Cart Sub Total
+        function getSidebarCartSubtotal(){
+            $.ajax({
+                method: 'GET',
+                url: "{{route('cart.sidebar-product-total')}}",
+                success: function(data){
+                    $('#mini_cart_subtotal').text("{{$settings->currency_icon}}"+data);
+                },
+                error: function(data){
+                    
+                }
+            })
+        }
     })
     </script>
 @endpush

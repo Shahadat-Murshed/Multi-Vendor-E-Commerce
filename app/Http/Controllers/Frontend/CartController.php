@@ -133,7 +133,7 @@ class CartController extends Controller
     public function removeProduct($rowId)
     {
         Cart::remove($rowId);
-        toastr('Product removed succesfully!', 'success', 'Success');
+        toastr('', 'warning', 'Product Removed Successfully');
         return redirect()->back();
     }
 

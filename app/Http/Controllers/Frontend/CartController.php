@@ -167,13 +167,13 @@ class CartController extends Controller
         $coupon = Coupon::where(['code' => $request->coupon_code, 'status' => 1])->first();
 
         if($coupon === null){
-            return response(['status' => 'error', 'message' => 'Coupon not exist!']);
+            return response(['status' => 'error', 'message' => 'Invalid Coupon!']);
         }elseif($coupon->start_date > date('Y-m-d')){
-            return response(['status' => 'error', 'message' => 'Coupon not exist!']);
+            return response(['status' => 'error', 'message' => 'Invalid Coupon!']);
         }elseif($coupon->end_date < date('Y-m-d')){
             return response(['status' => 'error', 'message' => 'Coupon is expired']);
         }elseif($coupon->total_used >= $coupon->quantity){
-            return response(['status' => 'error', 'message' => 'you can not apply this coupon']);
+            return response(['status' => 'error', 'message' => 'You already have redeemed this coupon to the Maximum']);
         }
 
         if($coupon->discount_type === 'amount'){
@@ -192,6 +192,7 @@ class CartController extends Controller
             ]);
         }
 
+        // dd(session()->get('coupon')['coupon_code']);
         return response(['status' => 'success', 'message' => 'Coupon applied successfully!']);
     }
 

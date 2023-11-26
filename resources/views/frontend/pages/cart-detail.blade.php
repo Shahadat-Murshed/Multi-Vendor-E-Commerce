@@ -121,13 +121,13 @@
                     <div class="wsus__cart_list_footer_button" id="sticky_sidebar">
                         <h6>total cart</h6>
                         <p>subtotal: <span id="sub_total">{{$settings->currency_icon}}{{getCartTotal()}}</span></p>
-                        {{-- <p>coupon(-): <span id="discount">{{$settings->currency_icon}}{{getCartDiscount()}}</span></p> --}}
+                        <p>coupon(-): <span id="discount">{{$settings->currency_icon}}{{getCartDiscount()}}</span></p>
                         <p class="total"><span>total:</span> <span id="cart_total">{{$settings->currency_icon}}{{getMainCartTotal()}}</span></p>
 
-                        {{-- <form id="coupon_form">
+                        <form id="coupon_form">
                             <input type="text" placeholder="Coupon Code" name="coupon_code" value="{{session()->has('coupon') ? session()->get('coupon')['coupon_code'] : ''}}">
-                            <button type="submit" class="common_btn">apply</button>
-                        </form> --}}
+                            <button type="submit" class="common_btn cart_btn">apply</button>
+                        </form>
                         <a class="common_btn cart_btn mt-4 w-100 text-center" href="#">checkout</a>
                         <a class="common_btn cart_btn mt-1 w-100 text-center" href="{{route('home')}}">
                             <i class="fab fa-shopify"></i> Keep Shopping</a>
@@ -292,7 +292,44 @@
         }
 
         // applay coupon on cart
+        $('#coupon_form').on('submit', function(e){
+            e.preventDefault();
+            let formData = $(this).serialize();
+            $.ajax({
+                method: 'GET',
+                url: "{{ route('apply-coupon') }}",
+                data: formData,
+                success: function(data) {
+                   if(data.status === 'error'){
+                    toastr.error(data.message)
+                   }else if (data.status === 'success'){
+                    calculateCouponDescount()
+                    toastr.success(data.message)
+                   }
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            })
 
+        })
+
+        // calculate discount amount
+        function calculateCouponDescount(){
+            $.ajax({
+                method: 'GET',
+                url: "{{ route('coupon-calculation') }}",
+                success: function(data) {
+                    if(data.status === 'success'){
+                        $('#discount').text('{{$settings->currency_icon}}'+data.discount);
+                        $('#cart_total').text('{{$settings->currency_icon}}'+data.cart_total);
+                    }
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            })
+        }
         
 
 

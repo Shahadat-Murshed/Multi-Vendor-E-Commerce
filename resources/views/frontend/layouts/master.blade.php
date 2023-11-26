@@ -151,6 +151,8 @@
     <!--main/custom js-->
     <script src="{{ asset('frontend/js/main.js') }}"></script>
 
+    @include('frontend.layouts.scripts');
+
     <script>
         @if ($errors->any())
           @foreach ($errors->all() as $error )

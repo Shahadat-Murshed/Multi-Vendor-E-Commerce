@@ -65,7 +65,20 @@
                                 <p class="wsus__price">{{$settings->currency_icon}}{{$product->price}}</p>
                             @endif
                             
-                            <a class="add_cart" href="#">add to cart</a>
+                            <form class="shopping-cart-form">
+                                <input type="hidden" name="product_id" value="{{$product->id}}">
+                                @foreach ($product->variants as $variant)
+                                    <select class="d-none" name="variants_items[]">
+                                        @foreach ($variant->productVariantItems as $variantItem)
+                                            @if ($variantItem->status != 0)
+                                                <option value="{{$variantItem->id}}" {{$variantItem->is_default == 1 ? 'selected' : ''}}>{{$variantItem->name}} (${{$variantItem->price}})</option>
+                                            @endif
+                                        @endforeach
+                                    </select>                                        
+                                @endforeach
+                                <input name="qty" type="hidden" min="1" max="100" value="1" />
+                                <button class="add_cart" type="submit">add to cart</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -157,18 +170,18 @@
                                         <div class="row">
                                             <input type="hidden" name="product_id" value="{{$product->id}}">
                                             @foreach ($product->variants as $variant)
-                                            @if ($variant->status != 0)
-                                                <div class="col-xl-6 col-sm-6">
-                                                    <h5 class="mb-2">{{$variant->name}}: </h5>
-                                                    <select class="select_2" name="variants_items[]">
-                                                        @foreach ($variant->productVariantItems as $variantItem)
-                                                        @if ($variantItem->status != 0)
-                                                            <option value="{{$variantItem->id}}" {{$variantItem->is_default == 1 ? 'selected' : ''}}>{{$variantItem->name}} (${{$variantItem->price}})</option>
-                                                        @endif
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            @endif
+                                                @if ($variant->status != 0)
+                                                    <div class="col-xl-6 col-sm-6">
+                                                        <h5 class="mb-2">{{$variant->name}}: </h5>
+                                                        <select class="select_2" name="variants_items[]">
+                                                            @foreach ($variant->productVariantItems as $variantItem)
+                                                            @if ($variantItem->status != 0)
+                                                                <option value="{{$variantItem->id}}" {{$variantItem->is_default == 1 ? 'selected' : ''}}>{{$variantItem->name}} (${{$variantItem->price}})</option>
+                                                            @endif
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                @endif
                                             @endforeach
 
                                         </div>

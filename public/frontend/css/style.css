@@ -4564,7 +4564,8 @@ CART VIEW PAGE START
 }
 
 .wsus__cart_list_footer_button {
-    background: #fff;
+    background: #640263;
+    color: white;
     border-radius: 5px;
     padding: 20px;
     box-shadow: rgb(50 50 93 / 15%) 0px 0px 5px 0px;
@@ -4582,19 +4583,16 @@ CART VIEW PAGE START
     margin-top: 15px;
     display: flex;
     justify-content: space-between;
-    color: #353535;
     font-size: 15px;
 }
 
 .wsus__cart_list_footer_button p span {
-    color: #353535;
     font-size: 15px;
 }
 
 .wsus__cart_list_footer_button .total {
     border-top: 2px solid #fff;
     padding-top: 15px;
-    color: #353535;
 }
 
 .wsus__cart_list_footer_button .total span {
@@ -4604,9 +4602,15 @@ CART VIEW PAGE START
 .cart_empty p {
     text-transform: capitalize;
     font-size: 25px;
-    color: #353535;
+    color: white;
 }
-
+.cart_btn {
+    background: #640263 !important;
+    border: 1px solid #724e91;
+}
+.cart_btn:hover {
+    background: #724e91 !important;
+}
 /*======================
 CART VIEW PAGE END
 ========================*/

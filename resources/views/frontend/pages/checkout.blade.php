@@ -38,7 +38,7 @@
                         <div class="wsus__check_form">
                             <div class="d-flex">
                                 <h5>Shipping Details </h5>
-                            <a href="javascript:;" style="margin-left:auto;" class="common_btn" data-bs-toggle="modal" data-bs-target="#exampleModal">add
+                            <a href="javascript:;" style="margin-left:auto;" class="common_btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-plus"></i>&nbsp;add
                                 new address</a>
                             </div>
 
@@ -48,8 +48,8 @@
                                     <div class="wsus__checkout_single_address">
                                         <div class="form-check">
                                             <input class="form-check-input shipping_address" data-id="{{$address->id}}" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault1">
-                                            <label class="form-check-label" for="flexRadioDefault1">
+                                                id="flexRadioDefault-{{$address->id}}">
+                                            <label class="form-check-label" for="flexRadioDefault-{{$address->id}}">
                                                 Select Address
                                             </label>
                                         </div>
@@ -83,9 +83,9 @@
                                     </div>
                                 @elseif ($method->type === 'flat_cost')
                                     <div class="form-check">
-                                        <input class="form-check-input shipping_method" type="radio" name="exampleRadios" id="exampleRadios1"
+                                        <input class="form-check-input shipping_method" type="radio" name="exampleRadios" id="exampleRadios-{{$method->id}}"
                                             value="{{$method->id}}" data-id="{{$method->cost}}">
-                                        <label class="form-check-label" for="exampleRadios1">
+                                        <label class="form-check-label" for="exampleRadios-{{$method->id}}">
                                             {{$method->name}}
                                             <span>cost: ({{$settings->currency_icon}}{{$method->cost}})</span>
                                         </label>
@@ -111,7 +111,6 @@
                             <form action="" id="checkOutForm">
                                 <input type="hidden" name="shipping_method_id" value="" id="shipping_method_id">
                                 <input type="hidden" name="shipping_address_id" value="" id="shipping_address_id">
-
                             </form>
                             <a href="" id="submitCheckoutForm" class="common_btn">Place Order</a>
                         </div>
@@ -124,9 +123,9 @@
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header" style="background: #640263; border-bottom: 1px solid #724e91;">
                         <h5 class="modal-title" id="exampleModalLabel">add new address</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button style="background: #640263;" type="button" data-bs-dismiss="modal" aria-label="Close"><i style="background: #640263; color: white;" class="fa-solid fa-xmark p-2"></i></button>
                     </div>
                     <div class="modal-body p-0">
                         <div class="wsus__check_form p-3">

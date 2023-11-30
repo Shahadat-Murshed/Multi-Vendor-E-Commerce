@@ -1366,6 +1366,7 @@ PRODUCT MODAL VIEW START
 }
 .select2-container--default .select2-selection--single {
     background: none;
+    border: 2px solid #724e91;
 }
 .select2-container--default .select2-results__option--selected {
     background: #724e91;
@@ -4619,9 +4620,8 @@ CART VIEW PAGE END
 CHECKOUT PAGE START
 ========================*/
 .wsus__check_form {
-    background: #fff;
+    background: #640263;
     padding: 25px;
-    border-radius: 5px;
     box-shadow: rgb(50 50 93 / 15%) 0px 0px 5px 0px;
 }
 
@@ -4684,14 +4684,14 @@ CHECKOUT PAGE START
 .wsus__check_single_form textarea {
     width: 100%;
     padding: 13px 20px;
-    border: 1px solid #eee;
+    border: 1px solid #724e91;
     margin-bottom: 25px;
     font-size: 15px;
     font-weight: 400;
-    color: #0b2c3d;
+    color: #fff;
     resize: none;
     border-radius: 5px;
-    background: #fff;
+    background: #640263;
 }
 
 .wsus__check_single_form textarea {
@@ -4793,18 +4793,18 @@ CHECKOUT PAGE START
     text-transform: capitalize;
     flex-wrap: wrap;
     width: 100%;
-    color: #686868;
+    color: #fff;
 }
 
 .wsus__checkout_single_address ul li span {
-    color: #0b2c3d;
+    color: #fff;
     text-transform: capitalize;
     width: 30%;
     font-size: 15px;
 }
 
 .wsus__checkout_single_address .form-check {
-    background: #f2f2f2db;
+    background: #640263;
     border-radius: 3px;
     width: 100%;
     padding: 5px;
@@ -7392,7 +7392,9 @@ table.dataTable {
     font-weight: 400;
     border-radius: 5px;
     resize: none;
-    border: 1px solid #eee;
+    border: 1px solid #724e91;
+    background: #640263;
+    color: #fff;
 }
 
 .wsus__add_address_single

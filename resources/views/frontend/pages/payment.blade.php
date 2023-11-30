@@ -63,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-5 col-lg-5">
+                    {{-- <div class="col-xl-5 col-lg-5">
                         <div class="tab-content" id="v-pills-tabContent" id="sticky_sidebar">
   
 
@@ -87,7 +87,7 @@
 
 
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-xl-4 col-lg-4">
                         <div class="wsus__pay_booking_summary" id="sticky_sidebar2">
                             <h5>Order Summary</h5>

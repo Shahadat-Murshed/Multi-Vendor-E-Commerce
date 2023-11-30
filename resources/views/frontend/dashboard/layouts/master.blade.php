@@ -13,7 +13,7 @@
   <link rel="icon" type="image/png" href="{{asset('frontend/images')}}/favicon.png">
   <link rel="stylesheet" href="{{asset('frontend/css/all.min.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}">
-  <link rel="stylesheet" href="{{asset('frontend/css/select2.min.cs')}}s">
+  <link rel="stylesheet" href="{{asset('frontend/css/select2.min.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/slick.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/jquery.nice-number.min.css')}}">
   <link rel="stylesheet" href="{{asset('frontend/css/jquery.calendar.css')}}">

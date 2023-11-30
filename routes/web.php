@@ -3,6 +3,8 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\CheckOutController;
+use App\Http\Controllers\Backend\PaymentController;
 use App\Http\Controllers\Frontend\FlashSaleController;
 use App\Http\Controllers\Backend\VendorController;
 use App\Http\Controllers\Frontend\CartController;
@@ -55,6 +57,7 @@ Route::get('cart-products', [CartController::class, 'getCartProducts'])->name('c
 Route::post('cart/remove-sidebar-product', [CartController::class, 'removeSidebarProduct'])->name('cart.remove-sidebar-product');
 Route::get('cart/sidebar-product-total', [CartController::class, 'cartTotal'])->name('cart.sidebar-product-total');
 
+/** Coupon Routes **/
 Route::get('apply-coupon', [CartController::class, 'applyCoupon'])->name('apply-coupon');
 Route::get('coupon-calculation', [CartController::class, 'couponCalculation'])->name('coupon-calculation');
 
@@ -63,6 +66,16 @@ Route::group(['middleware'=> ['auth', 'verified'], 'prefix' => 'user', 'as' => '
     Route::get('profile', [UserProfileController::class, 'index'])->name('profile');
     Route::put('profile',[UserProfileController::class, 'updateProfile'])->name('profile.update');
     Route::post('profile',[UserProfileController::class, 'updatePassword'])->name('profile.update.password');
+
+    /** Checkout routes */
+    Route::get('checkout', [CheckOutController::class, 'index'])->name('checkout');
+    Route::post('checkout/address-create', [CheckOutController::class, 'createAddress'])->name('checkout.address.create');
+    Route::post('checkout/form-submit', [CheckOutController::class, 'checkOutFormSubmit'])->name('checkout.form-submit');
+
+    /** Payment Routes */
+    Route::get('payment', [PaymentController::class, 'index'])->name('payment');
+    Route::get('payment-success', [PaymentController::class, 'paymentSuccess'])->name('payment.success');
+
 
     /** User Address Controller **/
     Route::resource('address', UserAddressController::class);

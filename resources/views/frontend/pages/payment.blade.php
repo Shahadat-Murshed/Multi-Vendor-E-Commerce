@@ -57,7 +57,7 @@
 
                                 <button class="nav-link common_btn" id="v-pills-profile-tab" data-bs-toggle="pill"
                                 data-bs-target="#v-pills-cod" type="button" role="tab"
-                                aria-controls="v-pills-stripe" aria-selected="false">COD</button>
+                                aria-controls="v-pills-stripe" aria-selected="false">Cash On Delivery</button>
 
 
                             </div>
@@ -92,7 +92,7 @@
                         <div class="wsus__pay_booking_summary" id="sticky_sidebar2">
                             <h5>Order Summary</h5>
                             <p>subtotal : <span>{{$settings->currency_icon}}{{getCartTotal()}}</span></p>
-                            <p>shipping fee(+) : <span>{{$settings->currency_icon}}{{getShppingFee()}}</span></p>
+                            <p>shipping fee(+) : <span>{{$settings->currency_icon}}{{getShippingFee()}}</span></p>
                             <p>coupon(-) : <span>{{$settings->currency_icon}}{{getCartDiscount()}}</span></p>
                             <h6>total <span>{{$settings->currency_icon}}{{getFinalPayableAmount()}}</span></h6>
                         </div>

@@ -103,6 +103,7 @@
                 'admin.coupons.*',
                 'admin.shipping-rule.*',
                 'admin.vendor-profile.*',
+                'admin.payment-settings.*',
             ])}}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"
                     ><i class="fa-solid fa-cart-plus"></i><span>E-Commerce</span></a
@@ -134,6 +135,13 @@
                     ])}}">
                         <a class="nav-link" href="{{route('admin.vendor-profile.index')}}"
                             ><i class="fa-solid fa-person-shelter mr-0 mb-1"></i>Vendor Profile</a
+                        >
+                    </li>
+                    <li class="{{setActive([
+                        'admin.payment-settings.*'
+                    ])}}">
+                        <a class="nav-link" href="{{route('admin.payment-settings.index')}}"
+                            ><i class="fa-solid fa-person-shelter mr-0 mb-1"></i>Payment Settings</a
                         >
                     </li>
                 </ul>

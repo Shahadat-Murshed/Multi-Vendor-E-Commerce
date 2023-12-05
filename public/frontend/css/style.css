@@ -7619,13 +7619,12 @@ PAYMENT PAGE  START
 .wsus__pay_info_area .nav-pills .nav-link {
     margin-bottom: 10px;
     padding: 15px 0px;
-    background: #08c;
     border-radius: 30px;
 }
 
 .wsus__payment_menu {
-    padding: 15px;
-    background: #fff;
+    padding: 25px;
+    background: #221232;
     box-shadow: rgb(50 50 93 / 15%) 0px 0px 5px 0px;
     border-radius: 5px;
 }
@@ -7636,7 +7635,7 @@ PAYMENT PAGE  START
 
 .wsus__pay_info_area .nav-pills .nav-link.active,
 .wsus__pay_info_area .nav-pills .nav-link:hover {
-    background: rgb(2, 82, 122);
+    background: #724e91;
 }
 
 .wsus__pay_info_area .tab-pane {
@@ -7775,7 +7774,7 @@ PAYMENT PAGE  START
 
 .wsus__pay_booking_summary {
     padding: 20px;
-    background: #fff;
+    background: #221232;
     border-radius: 5px;
     box-shadow: rgb(50 50 93 / 15%) 0px 0px 5px 0px;
 }
@@ -7787,7 +7786,7 @@ PAYMENT PAGE  START
 }
 
 .wsus__pay_booking_summary p {
-    color: #353535;
+    color: #fff;
     text-transform: capitalize;
     display: flex;
     justify-content: space-between;
@@ -7795,7 +7794,7 @@ PAYMENT PAGE  START
 }
 
 .wsus__pay_booking_summary p span {
-    color: #353535;
+    color: #fff;
 }
 
 .wsus__pay_booking_summary h6 {
@@ -7809,7 +7808,7 @@ PAYMENT PAGE  START
 }
 
 .wsus__pay_booking_summary h6 span {
-    color: #353535;
+    color: #fff;
     font-weight: 700;
 }
 

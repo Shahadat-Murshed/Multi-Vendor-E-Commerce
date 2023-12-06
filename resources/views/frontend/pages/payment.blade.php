@@ -63,7 +63,7 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="col-xl-5 col-lg-5">
+                    <div class="col-xl-5 col-lg-5">
                         <div class="tab-content" id="v-pills-tabContent" id="sticky_sidebar">
   
 
@@ -72,22 +72,22 @@
                                 <div class="row">
                                     <div class="col-xl-12 m-auto">
                                         <div class="wsus__payment_area">
-                                            <a class="nav-link common_btn text-center" href="{{route('user.paypal.payment')}}">Pay with Paypal</a>
+                                            <a class="nav-link common_btn custom_btn text-center" href="{{route('user.paypal.payment')}}">Pay with Paypal</a>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            @include('frontend.pages.payment-gateway.stripe')
+                            {{-- @include('frontend.pages.payment-gateway.stripe')
 
                             @include('frontend.pages.payment-gateway.razorpay')
 
-                            @include('frontend.pages.payment-gateway.cod')
+                            @include('frontend.pages.payment-gateway.cod') --}}
 
 
 
                         </div>
-                    </div> --}}
+                    </div>
                     <div class="col-xl-4 col-lg-4">
                         <div class="wsus__pay_booking_summary" id="sticky_sidebar2">
                             <h5>Order Summary</h5>

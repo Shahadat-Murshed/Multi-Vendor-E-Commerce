@@ -34,7 +34,7 @@
                 <label for="currency_name">Currency Name</label>
                 <select name="currency_name" id="currency_name" class="form-control select2">
                     <option value="">Select</option>
-                    @foreach (config('settings.currecy_list') as $key => $currency)
+                    @foreach (config('settings.currency_list') as $key => $currency)
                         <option {{$currency === $paypalSetting->currency_name ? 'selected' : ''}} value="{{$currency}}">{{$key}}</option>
                     @endforeach
                 </select>

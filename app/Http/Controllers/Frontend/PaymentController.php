@@ -24,7 +24,7 @@ class PaymentController extends Controller
 {
     public function index()
     {
-        if(!Session::has('address')){
+        if (!Session::has('address')) {
             return redirect()->route('user.checkout');
         }
         return view('frontend.pages.payment');
@@ -56,7 +56,7 @@ class PaymentController extends Controller
         $order->save();
 
         // store order products
-        foreach(\Cart::content() as $item){
+        foreach (\Cart::content() as $item) {
             $product = Product::find($item->id);
             $orderProduct = new OrderProduct();
             $orderProduct->order_id = $order->id;
@@ -84,7 +84,6 @@ class PaymentController extends Controller
         $transaction->amount_real_currency = $paidAmount;
         $transaction->amount_real_currency_name = $paidCurrencyName;
         $transaction->save();
-
     }
 
     public function clearSession()
@@ -134,7 +133,7 @@ class PaymentController extends Controller
 
         // calculate payable amount depending on currency rate
         $total = getFinalPayableAmount();
-        $payableAmount = round($total*$paypalSetting->currency_rate, 2);
+        $payableAmount = round($total * $paypalSetting->currency_rate, 2);
 
 
         $response = $provider->createOrder([
@@ -155,16 +154,15 @@ class PaymentController extends Controller
 
         // dd($response);
 
-        if(isset($response['id']) && $response['id'] != null){
-            foreach($response['links'] as $link){
-                if($link['rel'] === 'approve'){
+        if (isset($response['id']) && $response['id'] != null) {
+            foreach ($response['links'] as $link) {
+                if ($link['rel'] === 'approve') {
                     return redirect()->away($link['href']);
                 }
             }
         } else {
             return redirect()->route('user.paypal.cancel');
         }
-
     }
 
     public function paypalSuccess(Request $request)
@@ -175,19 +173,19 @@ class PaymentController extends Controller
 
         $response = $provider->capturePaymentOrder($request->token);
 
-        dd($response);
+        // dd($response);
 
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
 
             // calculate payable amount depending on currency rate
-            $paypalSetting = PaypalSetting::first();
-            $total = getFinalPayableAmount();
-            $paidAmount = round($total*$paypalSetting->currency_rate, 2);
+            // $paypalSetting = PaypalSetting::first();
+            // $total = getFinalPayableAmount();
+            // $paidAmount = round($total * $paypalSetting->currency_rate, 2);
 
-            $this->storeOrder('paypal', 1, $response['id'], $paidAmount, $paypalSetting->currency_name);
+            // $this->storeOrder('paypal', 1, $response['id'], $paidAmount, $paypalSetting->currency_name);
 
-            // clear session
-            $this->clearSession();
+            // // clear session
+            // $this->clearSession();
 
             return redirect()->route('user.payment.success');
         }
@@ -213,56 +211,54 @@ class PaymentController extends Controller
         $payableAmount = round($total * $stripeSetting->currency_rate, 2);
 
         Stripe::setApiKey($stripeSetting->secret_key);
-       $response = Charge::create([
+        $response = Charge::create([
             "amount" => $payableAmount * 100,
             "currency" => $stripeSetting->currency_name,
             "source" => $request->stripe_token,
             "description" => "product purchase!"
         ]);
 
-        if($response->status === 'succeeded'){
+        if ($response->status === 'succeeded') {
             $this->storeOrder('stripe', 1, $response->id, $payableAmount, $stripeSetting->currency_name);
             // clear session
             $this->clearSession();
 
             return redirect()->route('user.payment.success');
-        }else {
+        } else {
             toastr('Someting went wrong try agin later!', 'error', 'Error');
             return redirect()->route('user.payment');
         }
-
     }
 
     /** Razorpay payment */
     public function payWithRazorPay(Request $request)
     {
-       $razorPaySetting = RazorpaySetting::first();
-       $api = new Api($razorPaySetting->razorpay_key, $razorPaySetting->razorpay_secret_key);
+        $razorPaySetting = RazorpaySetting::first();
+        $api = new Api($razorPaySetting->razorpay_key, $razorPaySetting->razorpay_secret_key);
 
-       // amount calculation
-       $total = getFinalPayableAmount();
-       $payableAmount = round($total * $razorPaySetting->currency_rate, 2);
-       $payableAmountInPaisa = $payableAmount * 100;
+        // amount calculation
+        $total = getFinalPayableAmount();
+        $payableAmount = round($total * $razorPaySetting->currency_rate, 2);
+        $payableAmountInPaisa = $payableAmount * 100;
 
-       if($request->has('razorpay_payment_id') && $request->filled('razorpay_payment_id')){
-            try{
+        if ($request->has('razorpay_payment_id') && $request->filled('razorpay_payment_id')) {
+            try {
                 $response = $api->payment->fetch($request->razorpay_payment_id)
                     ->capture(['amount' => $payableAmountInPaisa]);
-            }catch(\Exception $e){
+            } catch (\Exception $e) {
                 toastr($e->getMessage(), 'error', 'Error');
                 return redirect()->back();
             }
 
 
-            if($response['status'] == 'captured'){
+            if ($response['status'] == 'captured') {
                 $this->storeOrder('razorpay', 1, $response['id'], $payableAmount, $razorPaySetting->currency_name);
                 // clear session
                 $this->clearSession();
 
                 return redirect()->route('user.payment.success');
             }
-
-       }
+        }
     }
 
     /** pay with cod */
@@ -270,13 +266,13 @@ class PaymentController extends Controller
     {
         $codPaySetting = CodSetting::first();
         $setting = GeneralSetting::first();
-        if($codPaySetting->status == 0){
+        if ($codPaySetting->status == 0) {
             return redirect()->back();
         }
 
         // amount calculation
-       $total = getFinalPayableAmount();
-       $payableAmount = round($total, 2);
+        $total = getFinalPayableAmount();
+        $payableAmount = round($total, 2);
 
 
         $this->storeOrder('COD', 0, \Str::random(10), $payableAmount, $setting->currency_name);
@@ -284,8 +280,5 @@ class PaymentController extends Controller
         $this->clearSession();
 
         return redirect()->route('user.payment.success');
-            
-
     }
-
 }

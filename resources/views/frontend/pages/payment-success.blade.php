@@ -32,10 +32,10 @@
         PAYMENT PAGE START
     ==============================-->
     <section id="wsus__cart_view">
-        <div class="container">
+        <div class="container" style="height: 300px">
             <div class="wsus__pay_info_area">
                 <div class="row">
-                    <h1>Paymet success!</h1>
+                    <h1>Paymet successfull!</h1>
                 </div>
             </div>
         </div>

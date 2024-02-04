@@ -125,7 +125,7 @@
                 <div class="modal-content">
                     <div class="modal-header" style="background: #640263; border-bottom: 1px solid #724e91;">
                         <h5 class="modal-title" id="exampleModalLabel">add new address</h5>
-                        <button style="background: #640263;" type="button" data-bs-dismiss="modal" aria-label="Close"><i style="background: #640263; color: white;" class="fa-solid fa-xmark p-2"></i></button>
+                        <button style="background: #640263; border-radius: 5px; border: 1px solid #724e91;" type="button" data-bs-dismiss="modal" aria-label="Close"><i style="color: white;" class="fa-solid fa-xmark p-2"></i></button>
                     </div>
                     <div class="modal-body p-0">
                         <div class="wsus__check_form p-3">
@@ -184,7 +184,7 @@
 
                                     <div class="col-xl-12">
                                         <div class="wsus__check_single_form">
-                                            <button type="submit" class="btn btn-primary">Save changes</button>
+                                            <button type="submit" class="btn common_btn">Save changes</button>
                                         </div>
                                     </div>
                                 </div>

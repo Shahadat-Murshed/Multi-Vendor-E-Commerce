@@ -62,8 +62,8 @@
             </div>
         </div>
     </div>
-    <div style="color: black" class="wsus__mini_cart">
-        <h4 style="color: black">
+    <div class="wsus__mini_cart">
+        <h4>
             shopping cart
             <span class="wsus_close_mini_cart"
                 ><i class="far fa-times"></i
@@ -77,25 +77,25 @@
                         <a class="wsis__del_icon remove_sidebar_product" data-id="{{$sidebarProduct->rowId}}" href="#" ><i class="fas fa-minus-circle"></i></a>
                     </div>
                     <div class="wsus__cart_text">
-                        <a style="color:black" class="wsus__cart_title" href="{{route('product-detail', $sidebarProduct->options->slug)}}">{{$sidebarProduct->name}}</a>
+                        <a class="wsus__cart_title" href="{{route('product-detail', $sidebarProduct->options->slug)}}">{{$sidebarProduct->name}}</a>
                         <p>
                             {{$settings->currency_icon}}{{$sidebarProduct->price}}
                         </p>
-                        <small style="color:black">Quantity: {{$sidebarProduct->qty}}</small>
+                        <small >Quantity: {{$sidebarProduct->qty}}</small>
                         <br>
-                        <small style="color:black">Total: {{$settings->currency_icon.($sidebarProduct->price + $sidebarProduct->options->variants_total) * $sidebarProduct->qty}}</small>
+                        <small >Total: {{$settings->currency_icon.($sidebarProduct->price + $sidebarProduct->options->variants_total) * $sidebarProduct->qty}}</small>
                     </div>
                 </li>
             @endforeach
             @if (Cart::content()->count() == 0)
-                <li class="text-center" style="color: black">Cart is Empty</li>
+                <li class="text-center" >Cart is Empty</li>
             @endif
         </ul>
         <div class="mini_cart_actions {{Cart::content()->count() == 0 ? 'd-none' : ''}}">
-            <h5 style="color: black">sub total <span id="mini_cart_subtotal"></span></h5>
+            <h5 >sub total <span id="mini_cart_subtotal"></span></h5>
             <div class="wsus__minicart_btn_area">
                 <a class="common_btn" href="{{route('cart-details')}}">view cart</a>
-                <a class="common_btn" href="check_out.html">checkout</a>
+                <a class="common_btn" href="{{route('user.checkout')}}">checkout</a>
             </div>
         </div>
     </div>

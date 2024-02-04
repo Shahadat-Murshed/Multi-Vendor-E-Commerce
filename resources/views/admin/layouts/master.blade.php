@@ -53,9 +53,12 @@
       <div class="main-content">
         @yield('content')
       </div>
+      @php
+        use Carbon\Carbon;
+      @endphp
       <footer class="main-footer">
         <div class="footer-left">
-          Copyright &copy; 2023 <div class="bullet"></div><a href="https://github.com/Shahadat-Murshed">Shahadat Mursed</a>
+          Copyright &copy; {{ Carbon::now()->year }} <div class="bullet"></div><a href="https://github.com/Shahadat-Murshed">Shahadat Mursed</a>
         </div>
         <div class="footer-right">
           

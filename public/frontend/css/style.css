@@ -9,6 +9,8 @@ body {
     font-family: "Poppins", sans-serif;
     overflow-x: hidden;
     background: black;
+    position: relative;
+    /* min-height: 100vh; */
 }
 
 ul,
@@ -80,7 +82,8 @@ p {
 
 .common_btn:hover {
     color: #fff;
-    background: rgb(2, 82, 122);
+    background: #221232;
+    border: 2px solid #640263;
 }
 
 .see_btn {
@@ -480,7 +483,6 @@ header {
     right: -370px;
     width: 350px;
     height: 100vh;
-    background: #fff;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
         rgba(0, 0, 0, 0.22) 0px 15px 12px;
     padding: 20px;
@@ -609,7 +611,6 @@ header {
 .wsus__mini_cart .wsus__cart_text p {
     font-size: 16px;
     font-weight: 600;
-    color: #333;
     margin-top: 0;
 }
 
@@ -628,7 +629,6 @@ header {
 }
 
 .wsus__mini_cart h5 span {
-    color: #353535;
     font-weight: 700;
 }
 
@@ -640,6 +640,7 @@ header {
 
 .wsus__mini_cart.\.show_cart {
     right: 0;
+    background: #221232;
 }
 
 /*======================
@@ -2670,6 +2671,10 @@ HOME SERVOCES START
 ========================*/
 footer {
     background: #def0ff;
+    position: absolute;
+    bottom: -150px;
+    right: 0;
+    width: 100%;
 }
 
 .wsus__footer_content img {
@@ -2811,7 +2816,6 @@ footer {
 
 .wsus__footer_bottom {
     padding: 30px 0px;
-    margin-top: 67px;
     background: #221232;
 }
 
@@ -4620,7 +4624,7 @@ CART VIEW PAGE END
 CHECKOUT PAGE START
 ========================*/
 .wsus__check_form {
-    background: #640263;
+    background: #221232;
     padding: 25px;
     box-shadow: rgb(50 50 93 / 15%) 0px 0px 5px 0px;
 }
@@ -4703,9 +4707,8 @@ CHECKOUT PAGE START
 }
 
 .wsus__order_details {
-    background: #f3faffc2;
     overflow: hidden;
-    background: #fff;
+    background: #221232;
     padding: 25px;
     border-radius: 5px;
     box-shadow: rgb(50 50 93 / 15%) 0px 0px 5px 0px;
@@ -4721,19 +4724,13 @@ CHECKOUT PAGE START
     display: flex;
     justify-content: space-between;
     text-transform: capitalize;
-    color: #0b2c3d;
     margin: 15px 0px;
-}
-
-.wsus__order_details_summery p span {
-    color: #0b2c3d;
 }
 
 .wsus__order_details .wsus__product {
     font-size: 18px;
     font-weight: 600;
     text-transform: capitalize;
-    color: #0b2c3d;
     /* padding-top: 15px; */
     /* border-top: 1px solid #eee; */
 }
@@ -4743,7 +4740,6 @@ CHECKOUT PAGE START
 }
 
 .wsus__order_details .form-check label {
-    color: #0b2c3d;
     font-size: 15px;
     font-weight: 400;
 }
@@ -4804,7 +4800,7 @@ CHECKOUT PAGE START
 }
 
 .wsus__checkout_single_address .form-check {
-    background: #640263;
+    background: #221232;
     border-radius: 3px;
     width: 100%;
     padding: 5px;
@@ -9034,10 +9030,6 @@ header .wsus__call_text a:hover {
     line-height: 35px;
     display: block;
     font-size: 13px;
-}
-
-.footer_2 {
-    background: #640263;
 }
 
 .footer_2 form {

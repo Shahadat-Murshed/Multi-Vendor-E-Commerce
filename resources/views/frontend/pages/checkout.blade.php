@@ -74,9 +74,9 @@
                             @foreach ($shippingMethods as $method)
                                 @if ($method->type === 'min_cost' && getCartTotal() >= $method->min_cost)
                                     <div class="form-check">
-                                        <input class="form-check-input shipping_method" type="radio" name="exampleRadios" id="exampleRadios1"
+                                        <input class="form-check-input shipping_method" type="radio" name="exampleRadios" id="exampleRadios-{{$method->id}}"
                                             value="{{$method->id}}" data-id="{{$method->cost}}">
-                                        <label class="form-check-label" for="exampleRadios1">
+                                        <label class="form-check-label" for="exampleRadios-{{$method->id}}">
                                             {{$method->name}}
                                             <span>cost: ({{$settings->currency_icon}}{{$method->cost}})</span>
                                         </label>
@@ -91,28 +91,67 @@
                                         </label>
                                     </div>
                                 @endif
-                            @endforeach
-
+                            @endforeach                            
                             <div class="wsus__order_details_summery">
                                 <p>subtotal: <span>{{$settings->currency_icon}}{{getCartTotal()}}</span></p>
                                 <p>shipping fee(+): <span id="shipping_fee">{{$settings->currency_icon}}0</span></p>
                                 <p>coupon(-): <span>{{$settings->currency_icon}}{{getCartDiscount()}}</span></p>
                                 <p><b>total:</b> <span><b id="total_amount" data-id="{{getMainCartTotal()}}">{{$settings->currency_icon}}{{getMainCartTotal()}}</b></span></p>
                             </div>
-                            <div class="terms_area">
-                                <div class="form-check">
-                                    <input class="form-check-input agree_term" type="checkbox" value="" id="flexCheckChecked3"
-                                        checked>
-                                    <label class="form-check-label" for="flexCheckChecked3">
-                                        I have read and agree to the website <a href="#">terms and conditions *</a>
-                                    </label>
-                                </div>
-                            </div>
                             <form action="" id="checkOutForm">
+                                <p class="wsus__product">preferred delivery time</p>                               
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios-delivery" id="exampleRadios-delivery-1"
+                                        value="anytime" data-id="">
+                                    <label class="form-check-label" for="exampleRadios-delivery-1">
+                                        anytime
+                                    </label>
+                                </div>                        
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="exampleRadios-delivery" id="exampleRadios-delivery-2"
+                                        value="between" data-id="">
+                                    <label class="form-check-label" for="exampleRadios-delivery-2">
+                                        between
+                                    </label>
+                                    <div class="row d-none" id="schedule">
+                                        <div class="col-md-5 pt-1">
+                                            <div class="wsus__check_single_form">
+                                                <select class="select_2" name="hour_from">
+                                                    <option value="9:00">9:00</option>
+                                                    @foreach (config('settings.hours') as $key => $hour)
+                                                        <option {{$hour === old('hour') ? 'selected' : ''}} value="{{$hour}}">{{$hour}}</option>
+                                                    @endforeach
+    
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <p class="col-md-2 text-center pt-3">To</p>
+                                        <div class="col-md-5 pt-1">
+                                            <div class="wsus__check_single_form">
+                                                <select class="select_2" name="hour_to">
+                                                    <option value="5:00">5:00</option>
+                                                    @foreach (config('settings.hours') as $key => $hour)
+                                                        <option {{$hour === old('hour') ? 'selected' : ''}} value="{{$hour}}">{{$hour}}</option>
+                                                    @endforeach
+    
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+                                </div>
                                 <input type="hidden" name="shipping_method_id" value="" id="shipping_method_id">
                                 <input type="hidden" name="shipping_address_id" value="" id="shipping_address_id">
+                                <div class="terms_area">
+                                    <div class="form-check">
+                                        <input class="form-check-input agree_term" type="checkbox" value="" id="flexCheckChecked3"
+                                            checked>
+                                        <label class="form-check-label" for="flexCheckChecked3">
+                                            I have read and agree to the website <a href="#">terms and conditions *</a>
+                                        </label>
+                                    </div>
+                                </div>
+                                <a href="" id="submitCheckoutForm" class="common_btn">Place Order</a>
                             </form>
-                            <a href="" id="submitCheckoutForm" class="common_btn">Place Order</a>
                         </div>
                     </div>
                 </div>
@@ -189,7 +228,6 @@
                                     </div>
                                 </div>
                             </form>
-
                         </div>
                     </div>
                 </div>
@@ -258,9 +296,13 @@
                     }
                 })
             }
+        })
 
-
-
+        $('#exampleRadios-delivery-2').on('click', function(){
+            $('#schedule').removeClass('d-none');      
+        })
+        $('#exampleRadios-delivery-1').on('click', function(){
+            $('#schedule').addClass('d-none');      
         })
     })
 </script>

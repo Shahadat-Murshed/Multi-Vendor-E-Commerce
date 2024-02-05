@@ -7656,6 +7656,9 @@ PAYMENT PAGE  START
 .wsus__pay_info_area .nav-pills .nav-link.active,
 .wsus__pay_info_area .nav-pills .nav-link:hover {
     background: #724e91;
+    background: #221232 !important;
+    border: 2px solid #724e91;
+    box-shadow: 5px 7px 10px 0px rgba(114, 78, 145, 1);
 }
 
 .wsus__pay_info_area .tab-pane {

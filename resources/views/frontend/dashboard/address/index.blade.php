@@ -23,14 +23,14 @@
                       <li><span>Phone :</span> {{$address->phone}}</li>
                       <li><span>email :</span> {{$address->email}}</li>
                       <li><span>country :</span> {{$address->country}}</li>
-                      <li><span>state :</span> {{$address->state}}</li>
                       <li><span>city :</span> {{$address->city}}</li>
+                      <li><span>area :</span> {{$address->state}}</li>
                       <li><span>zip code :</span> {{$address->zip}}</li>
-                      <li><span>address :</span> {{$address->address}}</li>
+                      <li><span>full address :</span> {{$address->address}}</li>
                     </ul>
                     <div class="wsus__address_btn">
-                      <a href="{{route('user.address.edit', $address->id)}}" class="edit custom_btn"><i class="far fa-edit"></i> edit</a>
-                      <a href="{{route('user.address.destroy', $address->id)}}" class="del delete-item custom_btn"><i class="far fa-trash-alt"></i> delete</a>
+                      <a href="{{route('user.address.edit', $address->id)}}" class=" custom_btn"><i class="far fa-edit"></i> edit</a>
+                      <a href="{{route('user.address.destroy', $address->id)}}" class=" delete-item custom_btn"><i class="far fa-trash-alt"></i> delete</a>
                     </div>
                   </div>
                 </div>

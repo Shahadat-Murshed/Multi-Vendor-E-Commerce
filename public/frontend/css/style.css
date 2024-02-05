@@ -7357,7 +7357,7 @@ WISHLIST PAGE START
 
 .wsus__address_btn {
     border-top: 1px solid #eee;
-    background: #f2f9ff;
+    background: rgba(100, 2, 99, 1);
     display: flex;
     justify-content: space-between;
 }
@@ -7371,7 +7371,6 @@ WISHLIST PAGE START
     color: #fff;
     padding: 5px;
     width: 100%;
-    background: #08c;
 }
 
 .wsus__address_btn a i {

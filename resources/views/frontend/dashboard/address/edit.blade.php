@@ -52,7 +52,7 @@
 
                   <div class="col-xl-6 col-md-6">
                     <div class="wsus__add_address_single">
-                      <label>State <b>*</b></label>
+                      <label>Area <b>*</b></label>
                       <input type="text" placeholder="State" name="state" value="{{$address->state}}">
                     </div>
                   </div>

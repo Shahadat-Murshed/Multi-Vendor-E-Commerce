@@ -110,7 +110,7 @@
   
 
   <!--main/custom js-->
-  <script src="{{asset('fronted/js/main.js')}}"></script>
+  <script src="{{asset('frontend/js/main.js')}}"></script>
   
   <!--For showing Dynamic Validation Errors-->
   <script>

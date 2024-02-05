@@ -41,12 +41,12 @@ class PaymentController extends Controller
     {
         $setting = GeneralSetting::first();
         if (Session::get('delivery_schedule.from') > 12) {
-            $from = (intval(Session::get('delivery_schedule.from')) - 12) . ' pm';
+            $from = (intval(Session::get('delivery_schedule.from')) - 12) . ':00' . ' pm';
         } else {
             $from = Session::get('delivery_schedule.from') . ' am';
         }
         if (Session::get('delivery_schedule.to') > 12) {
-            $to = (intval(Session::get('delivery_schedule.to')) - 12) . ' pm';
+            $to = (intval(Session::get('delivery_schedule.to')) - 12) . ':00' . ' pm';
         } else {
             $to = Session::get('delivery_schedule.to') . ' am';
         }

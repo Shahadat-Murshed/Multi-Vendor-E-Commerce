@@ -126,4 +126,5 @@ Route::get('out-for-delivery-orders', [OrderController::class, 'outForDeliveryOr
 Route::get('delivered-orders', [OrderController::class, 'deliveredOrders'])->name('delivered-orders');
 Route::get('canceled-orders', [OrderController::class, 'canceledOrders'])->name('canceled-orders');
 Route::get('asign-delivery/{orderId}', [OrderController::class, 'delivery'])->name('asign-delivery');
+Route::post('asign-delivery', [OrderController::class, 'assignDelivery'])->name('delivery.assign');
 Route::resource('order', OrderController::class);

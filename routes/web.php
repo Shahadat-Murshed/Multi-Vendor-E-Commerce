@@ -35,7 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 Route::get('admin/login', [AdminController::class, 'login'])->name('admin.login');
 
@@ -61,11 +61,11 @@ Route::get('cart/sidebar-product-total', [CartController::class, 'cartTotal'])->
 Route::get('apply-coupon', [CartController::class, 'applyCoupon'])->name('apply-coupon');
 Route::get('coupon-calculation', [CartController::class, 'couponCalculation'])->name('coupon-calculation');
 
-Route::group(['middleware'=> ['auth', 'verified'], 'prefix' => 'user', 'as' => 'user.'], function(){
+Route::group(['middleware' => ['auth', 'verified', 'role:user'], 'prefix' => 'user', 'as' => 'user.'], function () {
     Route::get('dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
     Route::get('profile', [UserProfileController::class, 'index'])->name('profile');
-    Route::put('profile',[UserProfileController::class, 'updateProfile'])->name('profile.update');
-    Route::post('profile',[UserProfileController::class, 'updatePassword'])->name('profile.update.password');
+    Route::put('profile', [UserProfileController::class, 'updateProfile'])->name('profile.update');
+    Route::post('profile', [UserProfileController::class, 'updatePassword'])->name('profile.update.password');
 
     /** Checkout routes */
     Route::get('checkout', [CheckOutController::class, 'index'])->name('checkout');
@@ -80,7 +80,7 @@ Route::group(['middleware'=> ['auth', 'verified'], 'prefix' => 'user', 'as' => '
     Route::get('paypal/payment', [PaymentController::class, 'payWithPaypal'])->name('paypal.payment');
     Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
     Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
-    
+
     /** User Address Controller **/
     Route::resource('address', UserAddressController::class);
 });

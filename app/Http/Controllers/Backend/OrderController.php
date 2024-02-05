@@ -11,6 +11,7 @@ use App\DataTables\PendingOrderDataTable;
 use App\DataTables\processedOrderDataTable;
 use App\DataTables\shippedOrderDataTable;
 use App\Http\Controllers\Controller;
+use App\Models\Delivery_boy;
 use App\Models\Order;
 use Illuminate\Http\Request;
 
@@ -71,7 +72,23 @@ class OrderController extends Controller
     public function delivery(string $id)
     {
         $order = Order::findOrFail($id);
-        dd($order);
+        $address = json_decode($order->order_address);
+        $deliveries_area = Delivery_boy::where('area',  $address->state)->where('city', $address->city)->get();
+        $deliveries_city = Delivery_boy::where('area', '!=', $address->state)->where('city', $address->city)->get();
+        // dd($address->state, $address->city, $deliveries_area->all());
+        return view('admin.delivery.asign', compact('order', 'deliveries_area', 'deliveries_city', 'address'));
+    }
+
+    public function assignDelivery(Request $request)
+    {
+        $order = Order::findOrFail($request->order_id);
+        $order->asigned_delivery_to = $request->delivery_man;
+        $order->save();
+
+        $name = Delivery_boy::findorFail($request->delivery_man)->name;
+
+        toastr("Assigned " . $name . " Successfully!", 'success');
+        return redirect()->route('admin.order.show', $order->id);
     }
 
     /**

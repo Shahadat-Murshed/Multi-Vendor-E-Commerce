@@ -42,6 +42,9 @@
                             <br>
                             <strong>Delivery Area:</strong>
                             <b>{{$address->state}}</b>
+                            <br>
+                            <strong>Delivery Asigned To:</strong>
+                            <b>{{$order->asigned_delivery_to ? $order->delivery_man->name : "No one's Yet"}}</b>
                         </address>
                       </div>
                     </div>

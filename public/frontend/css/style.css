@@ -4584,7 +4584,7 @@ CART VIEW PAGE START
 }
 
 .wsus__cart_list_footer_button {
-    background: #640263;
+    background: #221232;
     color: white;
     border-radius: 5px;
     padding: 20px;
@@ -4626,10 +4626,11 @@ CART VIEW PAGE START
 }
 .cart_btn {
     background: #640263 !important;
-    border: 1px solid #724e91;
 }
 .cart_btn:hover {
-    background: #724e91 !important;
+    background: #221232 !important;
+    border: 2px solid #724e91;
+    box-shadow: 5px 14px 40px -3px #640263;
 }
 /*======================
 CART VIEW PAGE END
@@ -7247,11 +7248,17 @@ WISHLIST PAGE START
 }
 
 .custom_btn {
-    background: #724e91 !important;
+    background: rgba(100, 2, 99, 1);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.3px);
+    -webkit-backdrop-filter: blur(8.3px);
+    border: 1px solid rgba(100, 2, 99, 1);
 }
 .custom_btn:hover {
-    background: #640263 !important;
+    background: #221232 !important;
     border: 2px solid #724e91;
+    box-shadow: 5px 7px 10px 0px rgba(114, 78, 145, 1);
 }
 
 .wsus__dash_pro_single i {
@@ -8583,8 +8590,13 @@ header .dropdown-menu a:hover {
     background: #aad8ff73 !important;
 }
 
+header .wsus__search button {
+    background: #640263 !important;
+    color: #fff !important;
+}
+
 header .wsus__search button:hover {
-    background: #08c !important;
+    background: #221232 !important;
     color: #fff !important;
 }
 

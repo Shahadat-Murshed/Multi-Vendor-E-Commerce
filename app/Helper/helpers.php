@@ -4,11 +4,12 @@ use Illuminate\Support\Facades\Session;
 
 /** Set Sidebar Item Active **/
 
-function setActive(array $route){
-    
-    if(is_array($route)){
-        foreach($route as $r){
-            if(request()->routeIs($r)){
+function setActive(array $route)
+{
+
+    if (is_array($route)) {
+        foreach ($route as $r) {
+            if (request()->routeIs($r)) {
                 return 'active';
             }
         }
@@ -17,11 +18,12 @@ function setActive(array $route){
 
 /** Check if Products have any discount **/
 
-function checkDiscount($product){
-    
+function checkDiscount($product)
+{
+
     $currentDate = date('Y-m-d');
 
-    if($product->offer_price > 0 && $currentDate >= $product->offer_start_date && $currentDate <= $product->offer_end_date ){
+    if ($product->offer_price > 0 && $currentDate >= $product->offer_start_date && $currentDate <= $product->offer_end_date) {
         return true;
     }
     return false;
@@ -29,17 +31,19 @@ function checkDiscount($product){
 
 /** Calcualte Discount Percentage **/
 
-function calculateDiscountPercent($originalPrice, $discountPrice){
-    
+function calculateDiscountPercent($originalPrice, $discountPrice)
+{
+
     $discountAmount = $originalPrice - $discountPrice;
-    $discountPercent = ($discountAmount/ $originalPrice) * 100;
+    $discountPercent = ($discountAmount / $originalPrice) * 100;
 
     return $discountPercent;
 }
 
-function productType(string $type){
-    
-    switch($type){
+function productType(string $type)
+{
+
+    switch ($type) {
         case 'new_arrival':
             return 'New';
             break;
@@ -62,59 +66,64 @@ function productType(string $type){
 
 /** get total cart amount */
 
-function getCartTotal(){
+function getCartTotal()
+{
     $total = 0;
-    foreach(\Cart::content() as $product){
+    foreach (\Cart::content() as $product) {
         $total += ($product->price + $product->options->variants_total) * $product->qty;
     }
     return $total;
 }
 
 /** get payable total amount */
-function getMainCartTotal(){
-    if(Session::has('coupon')){
+function getMainCartTotal()
+{
+    if (Session::has('coupon')) {
         $coupon = Session::get('coupon');
         $subTotal = getCartTotal();
-        if($coupon['discount_type'] === 'amount'){
+        if ($coupon['discount_type'] === 'amount') {
             $total = $subTotal - $coupon['discount'];
             return $total;
-        }elseif($coupon['discount_type'] === 'percent'){
-            $discount = $subTotal - ($subTotal * $coupon['discount'] / 100);
+        } elseif ($coupon['discount_type'] === 'percent') {
+            $discount = ($subTotal * $coupon['discount'] / 100);
             $total = $subTotal - $discount;
             return $total;
         }
-    }else {
+    } else {
         return getCartTotal();
     }
 }
 
 /** get cart discount */
-function getCartDiscount(){
-    if(Session::has('coupon')){
+function getCartDiscount()
+{
+    if (Session::has('coupon')) {
         $coupon = Session::get('coupon');
         $subTotal = getCartTotal();
-        if($coupon['discount_type'] === 'amount'){
+        if ($coupon['discount_type'] === 'amount') {
             return $coupon['discount'];
-        }elseif($coupon['discount_type'] === 'percent'){
-            $discount = $subTotal - ($subTotal * $coupon['discount'] / 100);
+        } elseif ($coupon['discount_type'] === 'percent') {
+            $discount = ($subTotal * $coupon['discount'] / 100);
             return $discount;
         }
-    }else {
+    } else {
         return 0;
     }
 }
 
 /** get selected shipping fee from session */
-function getShippingFee(){
-    if(Session::has('shipping_method')){
+function getShippingFee()
+{
+    if (Session::has('shipping_method')) {
         return Session::get('shipping_method')['cost'];
-    }else {
+    } else {
         return 0;
     }
 }
 
 /** get payable amount */
-function getFinalPayableAmount(){
+function getFinalPayableAmount()
+{
     return  getMainCartTotal() + getShippingFee();
 }
 

@@ -16,7 +16,7 @@
                         <h4>products details</h4>
                         <ul>
                             <li><a href="#">home</a></li>
-                            <li><a href="#">peoduct</a></li>
+                            <li><a href="#">product</a></li>
                             <li><a href="#">product details</a></li>
                         </ul>
                     </div>
@@ -126,8 +126,6 @@
 
                                 <ul class="wsus__button_area">
                                     <li><button type="submit" class="add_cart" href="#">add to cart</button></li>
-
-
                                     <li><a style="border: 1px solid gray;
                                         padding: 7px 11px;
                                         border-radius: 100%;" href="javascript:;" class="add_to_wishlist" data-id="{{$product->id}}"><i class="fal fa-heart"></i></a></li>

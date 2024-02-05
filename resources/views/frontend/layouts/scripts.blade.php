@@ -69,13 +69,13 @@
                                  ></a>
                              </div>
                              <div class="wsus__cart_text">
-                                 <a style="color: black" class="wsus__cart_title" href="{{url('product-detail')}}/${product.options.slug}">
+                                 <a  class="wsus__cart_title" href="{{url('product-detail')}}/${product.options.slug}">
                                      ${product.name}
                                  </a>
                                  <p>{{$settings->currency_icon}}${product.price}</p>
-                                 <small style="color:black">Quantity: ${product.qty} </small>
+                                 <small >Quantity: ${product.qty} </small>
                                  <br>
-                                 <small style="color:black">Total: {{$settings->currency_icon}}${((product.price + product.options.variants_total) * product.qty)}</small>
+                                 <small>Total: {{$settings->currency_icon}}${((product.price + product.options.variants_total) * product.qty)}</small>
                              </div>
                          </li>`
                                  
@@ -105,7 +105,7 @@
                  getSidebarCartSubtotal();
                  if($('.mini_cart_wrapper').find('li').length == 0){
                      $('.mini_cart_actions').addClass('d-none');
-                     $('.mini_cart_wrapper').html('<li class="text-center" style="color: black">Cart is Empty</li>')
+                     $('.mini_cart_wrapper').html('<li class="text-center">Cart is Empty</li>')
                  }
                  getCartCount();
                  toastr.success(data.message);

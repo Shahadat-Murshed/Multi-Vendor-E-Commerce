@@ -101,16 +101,16 @@
                             <form action="" id="checkOutForm">
                                 <p class="wsus__product">preferred delivery time</p>                               
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="exampleRadios-delivery" id="exampleRadios-delivery-1"
+                                    <input class="form-check-input" type="radio" name="exampleRadios_delivery" id="exampleRadios_delivery_1"
                                         value="anytime" data-id="">
-                                    <label class="form-check-label" for="exampleRadios-delivery-1">
+                                    <label class="form-check-label" for="exampleRadios_delivery_1">
                                         anytime
                                     </label>
                                 </div>                        
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="exampleRadios-delivery" id="exampleRadios-delivery-2"
+                                    <input class="form-check-input" type="radio" name="exampleRadios_delivery" id="exampleRadios_delivery_2"
                                         value="between" data-id="">
-                                    <label class="form-check-label" for="exampleRadios-delivery-2">
+                                    <label class="form-check-label" for="exampleRadios_delivery_2">
                                         between
                                     </label>
                                     <div class="row d-none" id="schedule">
@@ -298,10 +298,10 @@
             }
         })
 
-        $('#exampleRadios-delivery-2').on('click', function(){
+        $('#exampleRadios_delivery_2').on('click', function(){
             $('#schedule').removeClass('d-none');      
         })
-        $('#exampleRadios-delivery-1').on('click', function(){
+        $('#exampleRadios_delivery_1').on('click', function(){
             $('#schedule').addClass('d-none');      
         })
     })

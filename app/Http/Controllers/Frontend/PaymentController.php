@@ -15,6 +15,8 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Str;
+use Cart;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Stripe\Charge;
 use Stripe\Stripe;
@@ -38,9 +40,19 @@ class PaymentController extends Controller
     public function storeOrder($paymentMethod, $paymentStatus, $transactionId, $paidAmount, $paidCurrencyName)
     {
         $setting = GeneralSetting::first();
+        if (Session::get('delivery_schedule.from') > 12) {
+            $from = (intval(Session::get('delivery_schedule.from')) - 12) . ' pm';
+        } else {
+            $from = Session::get('delivery_schedule.from') . ' am';
+        }
+        if (Session::get('delivery_schedule.to') > 12) {
+            $to = (intval(Session::get('delivery_schedule.to')) - 12) . ' pm';
+        } else {
+            $to = Session::get('delivery_schedule.to') . ' am';
+        }
 
         $order = new Order();
-        $order->invocie_id = rand(1, 999999);
+        $order->invoice_id = $this->generateInvoiceNumber();
         $order->user_id = Auth::user()->id;
         $order->sub_total = getCartTotal();
         $order->amount =  getFinalPayableAmount();
@@ -52,6 +64,11 @@ class PaymentController extends Controller
         $order->order_address = json_encode(Session::get('address'));
         $order->shpping_method = json_encode(Session::get('shipping_method'));
         $order->coupon = json_encode(Session::get('coupon'));
+        if (Session::get('delivery_schedule.time') === 'anytime') {
+            $order->delivery_time = 'Anytime of the Day';
+        } elseif (Session::get('delivery_schedule.time') === 'between') {
+            $order->delivery_time = 'Between ' . $from . ' to ' . $to;
+        }
         $order->order_status = 'pending';
         $order->save();
 
@@ -86,12 +103,33 @@ class PaymentController extends Controller
         $transaction->save();
     }
 
+    public function generateInvoiceNumber()
+    {
+        do {
+            $invoiceNumber = $this->generateRandomInvoiceNumber();
+        } while ($this->isInvoiceNumberUnique($invoiceNumber));
+
+        return $invoiceNumber;
+    }
+
+    protected function generateRandomInvoiceNumber()
+    {
+        $currentDate = now()->format('Ymd');
+        return 'inv_' . $currentDate . '_' . Str::random(4); // Example: INVabc1234
+    }
+
+    protected function isInvoiceNumberUnique($invoiceNumber)
+    {
+        return Order::where('invoice_id', $invoiceNumber)->exists();
+    }
+
     public function clearSession()
     {
         \Cart::destroy();
         Session::forget('address');
         Session::forget('shipping_method');
         Session::forget('coupon');
+        Session::forget('delivery_schedule');
     }
 
 
@@ -173,19 +211,17 @@ class PaymentController extends Controller
 
         $response = $provider->capturePaymentOrder($request->token);
 
-        // dd($response);
-
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
 
             // calculate payable amount depending on currency rate
-            // $paypalSetting = PaypalSetting::first();
-            // $total = getFinalPayableAmount();
-            // $paidAmount = round($total * $paypalSetting->currency_rate, 2);
+            $paypalSetting = PaypalSetting::first();
+            $total = getFinalPayableAmount();
+            $paidAmount = round($total * $paypalSetting->currency_rate, 2);
 
-            // $this->storeOrder('paypal', 1, $response['id'], $paidAmount, $paypalSetting->currency_name);
+            $this->storeOrder('paypal', 1, $response['id'], $paidAmount, $paypalSetting->currency_name);
 
-            // // clear session
-            // $this->clearSession();
+            // clear session
+            $this->clearSession();
 
             return redirect()->route('user.payment.success');
         }

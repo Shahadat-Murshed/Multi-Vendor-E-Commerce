@@ -38,7 +38,7 @@
                 <div class="col-xl-9">
                     <div class="wsus__cart_list">
                         <div class="table-responsive">
-                            <table style="background: #640263; color:white">
+                            <table style="background: #221232; color:white">
                                 <tbody>
                                     <tr class="d-flex">
                                         <th class="wsus__pro_img">
@@ -60,9 +60,6 @@
                                         <th class="wsus__pro_select">
                                             quantity
                                         </th>
-
-
-
                                         <th class="wsus__pro_icon">
                                             <a href="#" class="common_btn cart_btn clear_cart">clear cart</a>
                                         </th>

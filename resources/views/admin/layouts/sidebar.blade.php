@@ -149,6 +149,9 @@
                     <li class="{{ setActive(['admin.slider.*']) }}">
                         <a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="fa-regular fa-image mr-0"></i>Slider</a>
                     </li>
+                    <li class="{{ setActive(['admin.slider.*']) }}">
+                        <a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="fa-regular fa-image mr-0"></i>Slider</a>
+                    </li>
                 </ul>
             </li>
 

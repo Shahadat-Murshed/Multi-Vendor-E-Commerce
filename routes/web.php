@@ -81,6 +81,9 @@ Route::group(['middleware' => ['auth', 'verified', 'role:user'], 'prefix' => 'us
     Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])->name('paypal.success');
     Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])->name('paypal.cancel');
 
+    /** Stripe routes */
+    Route::post('stripe/payment', [PaymentController::class, 'payWithStripe'])->name('stripe.payment');
+
     /** User Address Controller **/
     Route::resource('address', UserAddressController::class);
 });

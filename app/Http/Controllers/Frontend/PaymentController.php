@@ -20,7 +20,6 @@ use Cart;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use Stripe\Charge;
 use Stripe\Stripe;
-use Razorpay\Api\Api;
 
 class PaymentController extends Controller
 {
@@ -58,7 +57,7 @@ class PaymentController extends Controller
         $order->amount =  getFinalPayableAmount();
         $order->currency_name = $setting->currency_name;
         $order->currency_icon = $setting->currency_icon;
-        $order->product_qty = \Cart::content()->count();
+        $order->product_qty = Cart::content()->count();
         $order->payment_method = $paymentMethod;
         $order->payment_status = $paymentStatus;
         $order->order_address = json_encode(Session::get('address'));
@@ -73,7 +72,7 @@ class PaymentController extends Controller
         $order->save();
 
         // store order products
-        foreach (\Cart::content() as $item) {
+        foreach (Cart::content() as $item) {
             $product = Product::find($item->id);
             $orderProduct = new OrderProduct();
             $orderProduct->order_id = $order->id;
@@ -125,7 +124,7 @@ class PaymentController extends Controller
 
     public function clearSession()
     {
-        \Cart::destroy();
+        Cart::destroy();
         Session::forget('address');
         Session::forget('shipping_method');
         Session::forget('coupon');
@@ -240,7 +239,6 @@ class PaymentController extends Controller
 
     public function payWithStripe(Request $request)
     {
-
         // calculate payable amount depending on currency rate
         $stripeSetting = StripeSetting::first();
         $total = getFinalPayableAmount();
@@ -266,37 +264,6 @@ class PaymentController extends Controller
         }
     }
 
-    /** Razorpay payment */
-    public function payWithRazorPay(Request $request)
-    {
-        $razorPaySetting = RazorpaySetting::first();
-        $api = new Api($razorPaySetting->razorpay_key, $razorPaySetting->razorpay_secret_key);
-
-        // amount calculation
-        $total = getFinalPayableAmount();
-        $payableAmount = round($total * $razorPaySetting->currency_rate, 2);
-        $payableAmountInPaisa = $payableAmount * 100;
-
-        if ($request->has('razorpay_payment_id') && $request->filled('razorpay_payment_id')) {
-            try {
-                $response = $api->payment->fetch($request->razorpay_payment_id)
-                    ->capture(['amount' => $payableAmountInPaisa]);
-            } catch (\Exception $e) {
-                toastr($e->getMessage(), 'error', 'Error');
-                return redirect()->back();
-            }
-
-
-            if ($response['status'] == 'captured') {
-                $this->storeOrder('razorpay', 1, $response['id'], $payableAmount, $razorPaySetting->currency_name);
-                // clear session
-                $this->clearSession();
-
-                return redirect()->route('user.payment.success');
-            }
-        }
-    }
-
     /** pay with cod */
     public function payWithCod(Request $request)
     {
@@ -311,7 +278,7 @@ class PaymentController extends Controller
         $payableAmount = round($total, 2);
 
 
-        $this->storeOrder('COD', 0, \Str::random(10), $payableAmount, $setting->currency_name);
+        $this->storeOrder('COD', 0, Str::random(10), $payableAmount, $setting->currency_name);
         // clear session
         $this->clearSession();
 

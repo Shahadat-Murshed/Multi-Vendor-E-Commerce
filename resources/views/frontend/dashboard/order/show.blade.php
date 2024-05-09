@@ -11,22 +11,17 @@
 @endsection
 
 @section('content')
-    <!--=============================
-                                            DASHBOARD START
-                                          ==============================-->
+    <!--DASHBOARD START-->
     <section id="wsus__dashboard">
         <div class="container-fluid">
-            @include('vendor.layouts.sidebar')
-
+            @include('frontend.dashboard.layouts.sidebar')
             <div class="row">
                 <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
                     <div class="dashboard_content mt-2 mt-md-0">
-                        <h3><i class="far fa-user"></i> Order Details</h3>
+                        <h3><i class="fas fa-cart-plus"></i> Order Details</h3>
                         <div class="wsus__dashboard_profile">
 
-                            <!--============================
-                                                                INVOICE PAGE START
-                                                            ==============================-->
+                            <!--INVOICE PAGE START-->
                             <section id="" class="invoice-print">
                                 <div class="">
                                     <div class="wsus__invoice_area">
@@ -143,8 +138,8 @@
                                 </div>
                             </section>
                             <!--============================
-                                                                INVOICE PAGE END
-                                                            ==============================-->
+                                                                                    INVOICE PAGE END
+                                                                                ==============================-->
                             <div class="col">
                                 <div class="mt-2 float-end">
                                     <button class="btn btn-warning print_invoice">print</button>
@@ -158,8 +153,8 @@
         </div>
     </section>
     <!--=============================
-                                            DASHBOARD START
-                                          ==============================-->
+                                                                DASHBOARD START
+                                                              ==============================-->
 @endsection
 
 @push('scripts')

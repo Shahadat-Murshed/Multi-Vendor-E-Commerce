@@ -158,8 +158,8 @@
                                     <div class="invoice-detail-item">
                                         <div class="invoice-detail-name">Coupon (-)</div>
                                         <div class="invoice-detail-value">
-                                            {{ $coupon->discount ? $coupon->discount : 0 }}
-                                            {{ $coupon->discount_type == 'percent' ? '%' : $settings->currency_icon }}</div>
+                                            {{ @$coupon->discount ? @$coupon->discount : 0 }}
+                                            {{ @$coupon->discount_type == 'percent' ? '%' : $settings->currency_icon }}</div>
                                     </div>
                                     <hr class="mt-2 mb-2">
                                     <div class="invoice-detail-item">

@@ -6,8 +6,8 @@
 
 @section('content')
     <!--============================
-             BREADCRUMB START
-        ==============================-->
+                 BREADCRUMB START
+            ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -24,13 +24,13 @@
         </div>
     </section>
     <!--============================
-            BREADCRUMB END
-        ==============================-->
+                BREADCRUMB END
+            ==============================-->
 
 
     <!--============================
-           LOGIN/REGISTER PAGE START
-        ==============================-->
+               LOGIN/REGISTER PAGE START
+            ==============================-->
     <section id="wsus__login_register">
         <div class="container">
             <div class="row">
@@ -103,7 +103,7 @@
                                             <input id="passaword_confirmation" type="password" name="password_confirmation"
                                                 placeholder="Confirm Password">
                                         </div>
-                                        <button style="background: #724e91" class="common_btn mt-4" type="submit">signup</button>
+                                        <button class="common_btn mt-4" type="submit">signup</button>
                                     </form>
                                 </div>
                             </div>
@@ -114,6 +114,6 @@
         </div>
     </section>
     <!--============================
-           LOGIN/REGISTER PAGE END
-        ==============================-->
+               LOGIN/REGISTER PAGE END
+            ==============================-->
 @endsection

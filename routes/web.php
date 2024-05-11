@@ -58,6 +58,11 @@ Route::get('cart-products', [CartController::class, 'getCartProducts'])->name('c
 Route::post('cart/remove-sidebar-product', [CartController::class, 'removeSidebarProduct'])->name('cart.remove-sidebar-product');
 Route::get('cart/sidebar-product-total', [CartController::class, 'cartTotal'])->name('cart.sidebar-product-total');
 
+/** Product route */
+Route::get('products', [FrontendProductController::class, 'productsIndex'])->name('products.index');
+Route::get('product-detail/{slug}', [FrontendProductController::class, 'showProduct'])->name('product-detail');
+Route::get('change-product-list-view', [FrontendProductController::class, 'chageListView'])->name('change-product-list-view');
+
 /** Coupon Routes **/
 Route::get('apply-coupon', [CartController::class, 'applyCoupon'])->name('apply-coupon');
 Route::get('coupon-calculation', [CartController::class, 'couponCalculation'])->name('coupon-calculation');

@@ -15,11 +15,9 @@
             </div>
             <div class="col-xl-4 col-md-6 col-lg-4 d-none d-lg-block">
                 <div class="wsus__search">
-                    <form>
-                        <input type="text" placeholder="Search..." />
-                        <button type="submit">
-                            <i class="far fa-search"></i>
-                        </button>
+                    <form action="{{ route('products.index') }}">
+                        <input type="text" placeholder="Search..." name="search" value="{{ request()->search }}">
+                        <button type="submit"><i class="far fa-search"></i></button>
                     </form>
                 </div>
             </div>

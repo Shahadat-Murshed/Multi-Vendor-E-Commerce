@@ -21,8 +21,6 @@
                                             href="#list-home" role="tab">Paypal</a>
                                         <a class="list-group-item list-group-item-action" id="list-stripe-list" data-toggle="list"
                                             href="#list-stripe" role="tab">Stripe</a>
-                                        <a class="list-group-item list-group-item-action" id="list-razorpay-list" data-toggle="list"
-                                            href="#list-razorpay" role="tab">RazorPay</a>
                                         <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list"
                                             href="#list-settings" role="tab">COD</a>
                                     </div>

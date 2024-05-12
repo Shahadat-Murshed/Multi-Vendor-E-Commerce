@@ -29,13 +29,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        if($request->user()->role == 'admin'){
-            return redirect()->intended('/admin/dashboard');
+        if ($request->user()->status === 'inactive') {
+            Auth::guard('web')->logout();
+            $request->session()->regenerateToken();
+            toastr('account has been banned from the website please contact with support!', 'error', 'Account Banned!');
+            return redirect('/');
         }
-        elseif($request->user()->role == 'vendor'){
+
+        if ($request->user()->role == 'admin') {
+            return redirect()->intended('/admin/dashboard');
+        } elseif ($request->user()->role == 'vendor') {
             return redirect()->intended('/vendor/dashboard');
         }
-        
+
         return redirect()->intended(RouteServiceProvider::HOME);
     }
 

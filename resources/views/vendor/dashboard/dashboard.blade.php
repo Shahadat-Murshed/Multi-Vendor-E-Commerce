@@ -35,7 +35,18 @@
                                         <p>My Profile</p>
                                     </a>
                                 </div>
-
+                                <div class="col-xl-3 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item blue" href="#">
+                                        <p>Balance</p>
+                                        <p>{{ $settings->currency_icon }}{{ $totalBalance }}</p>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item green" href="{{ route('vendor.withdraw') }}">
+                                        <p>Available For Withdraw</p>
+                                        <p>{{ $settings->currency_icon }}{{ $availbalance }}</p>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>

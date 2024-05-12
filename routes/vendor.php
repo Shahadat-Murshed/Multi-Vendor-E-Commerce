@@ -45,3 +45,7 @@ Route::put('products-variant-item-status', [VendorProductVariantItemController::
 Route::get('orders', [VendorOrderController::class, 'index'])->name('orders.index');
 Route::get('orders/show/{id}', [VendorOrderController::class, 'show'])->name('orders.show');
 Route::get('orders/status/{id}', [VendorOrderController::class, 'orderStatus'])->name('orders.status');
+
+/** Withdraw Funds */
+Route::get('withdraw', [VendorController::class, 'withdraw'])->name('withdraw');
+Route::post('withdraw', [VendorController::class, 'withdrawSubmit'])->name('withdraw');

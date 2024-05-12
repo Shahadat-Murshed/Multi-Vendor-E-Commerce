@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\UserAddressController;
 use App\Http\Controllers\Frontend\UserDashboardController;
 use App\Http\Controllers\Frontend\UserOrderController;
 use App\Http\Controllers\Frontend\UserProfileController;
+use App\Http\Controllers\Frontend\UserVendorRequestController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -96,4 +97,8 @@ Route::group(['middleware' => ['auth', 'verified', 'role:user'], 'prefix' => 'us
     /** Order Routes */
     Route::get('orders', [UserOrderController::class, 'index'])->name('orders.index');
     Route::get('orders/show/{id}', [UserOrderController::class, 'show'])->name('orders.show');
+
+    /** Vendor request route */
+    Route::get('vendor-request', [UserVendorRequestController::class, 'index'])->name('vendor-request.index');
+    Route::post('vendor-request', [UserVendorRequestController::class, 'create'])->name('vendor-request.create');
 });

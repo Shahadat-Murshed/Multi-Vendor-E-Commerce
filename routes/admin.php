@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\CouponController;
+use App\Http\Controllers\Backend\CustomerListController;
 use App\Http\Controllers\Backend\FlashSaleController;
 use App\Http\Controllers\Backend\HomePageSettingController;
 use App\Http\Controllers\Backend\OrderController;
@@ -22,6 +23,8 @@ use App\Http\Controllers\Backend\ShippingRuleController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\StripeSettingController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\VendorListController;
+use App\Http\Controllers\Backend\VendorRequestController;
 use Illuminate\Support\Facades\Route;
 
 // Admin Routes
@@ -116,6 +119,19 @@ Route::put('product-slider-section-three', [HomePageSettingController::class, 'u
 Route::get('payment-settings', [PaymentSettingController::class, 'index'])->name('payment-settings.index');
 Route::resource('paypal-setting', PaypalSettingController::class);
 Route::put('stripe-setting/{id}', [StripeSettingController::class, 'update'])->name('stripe-setting.update');
+
+/** Vendor request routes */
+Route::get('vendor-requests', [VendorRequestController::class, 'index'])->name('vendor-requests.index');
+Route::get('vendor-requests/{id}/show', [VendorRequestController::class, 'show'])->name('vendor-requests.show');
+Route::put('vendor-requests/{id}/change-status', [VendorRequestController::class, 'changeStatus'])->name('vendor-requests.change-status');
+
+/** coustomer list routes */
+Route::get('customer', [CustomerListController::class, 'index'])->name('customer.index');
+Route::put('customer/status-change', [CustomerListController::class, 'changeStatus'])->name('customer.status-change');
+
+/** vendors list routes */
+Route::get('vendor-list', [VendorListController::class, 'index'])->name('vendor-list.index');
+Route::put('vendor-list/status-change', [VendorListController::class, 'changeStatus'])->name('vendor-list.status-change');
 
 /** Order routes */
 Route::get('payment-status', [OrderController::class, 'changePaymentStatus'])->name('payment.status');

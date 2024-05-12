@@ -142,6 +142,23 @@
                 </ul>
             </li>
 
+            <li class="dropdown {{ setActive(['admin.vendor-requests.*', 'admin.customer.index', 'admin.vendor-list.index']) }}">
+                <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-regular fa-user"></i>
+                    <span>Manage Users</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ setActive(['admin.vendor-list.index']) }}">
+                        <a class="nav-link" href="{{ route('admin.vendor-list.index') }}"><i class="fa-solid fa-shop"></i>All
+                            Vendors</a>
+                    </li>
+                    <li class="{{ setActive(['admin.vendor-requests.*']) }}">
+                        <a class="nav-link" href="{{ route('admin.vendor-requests.index') }}"><i class="fa-solid fa-spinner"></i>Pending
+                            Vendors</a>
+                    </li>
+                    <li class="{{ setActive(['admin.customer.index']) }}">
+                        <a class="nav-link" href="{{ route('admin.customer.index') }}"><i class="fa-solid fa-person"></i>Customers</a>
+                    </li>
+                </ul>
+            </li>
             <li class="dropdown {{ setActive(['admin.slider.*']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-window-restore"></i>
                     <span>Manage Website</span></a>

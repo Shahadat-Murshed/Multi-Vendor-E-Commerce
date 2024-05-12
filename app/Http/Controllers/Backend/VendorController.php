@@ -35,6 +35,17 @@ class VendorController extends Controller
 
     public function withdrawSubmit(Request $request)
     {
+        $userId = Auth::user()->id; // Assuming you're getting the user's ID from authentication
+        $twoWeekAgo = Carbon::now()->subWeeks(2);
+
+        $availbalance = OrderProduct::where('vendor_id', $userId)
+            ->where('created_at', '>=', $twoWeekAgo)
+            ->sum('unit_price');
+        if ($request->amount > $availbalance) {
+            toastr('Insufficient Balance', 'error');
+            return redirect()->route('vendor.dashboard');
+        }
+
         $balance = new BalanceWithdrawRequest();
         $balance->vendor_id = Auth::user()->id;
         $balance->amount = $request->amount;

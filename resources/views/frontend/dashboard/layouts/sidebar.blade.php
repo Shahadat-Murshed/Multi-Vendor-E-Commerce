@@ -12,6 +12,18 @@
         <li><a class="{{ setActive(['user.profile']) }}" href="{{ route('user.profile') }}"><i class="far fa-user"></i> My Profile</a></li>
         <li><a class="{{ setActive(['user.address.index']) }}" href="{{ route('user.address.index') }}"><i class="fa fa-address-card"></i>
                 Addresses</a></li>
+        @php
+            $exists = \App\Models\Delivery_boy::where('email', Auth::user()->email)->exists();
+        @endphp
+        @if ($exists)
+            <li>
+                <a class="{{ setActive(['user.parcel.index']) }}" href="{{ route('user.parcel.index') }}">
+                    <i class="fa fa-truck"></i>
+                    Parcel Delivery
+                </a>
+            </li>
+        @endif
+
         <li><a href="{{ route('user.vendor-request.index') }}"><i class="fa-solid fa-shop"></i>Become A Vendor</a></li>
         <li>
 

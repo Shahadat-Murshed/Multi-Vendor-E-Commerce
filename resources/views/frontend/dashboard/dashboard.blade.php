@@ -37,12 +37,17 @@
                                         <p>Become A Vendor</p>
                                     </a>
                                 </div>
-                                <div class="col-xl-3 col-6 col-md-4">
-                                    <a class="wsus__dashboard_item green" href="{{ route('user.parcel.index') }}">
-                                        <i class="fa-solid fa-truck"></i>
-                                        <p>Parcel Delivery</p>
-                                    </a>
-                                </div>
+                                @php
+                                    $exists = \App\Models\Delivery_boy::where('email', Auth::user()->email)->exists();
+                                @endphp
+                                @if ($exists)
+                                    <div class="col-xl-3 col-6 col-md-4">
+                                        <a class="wsus__dashboard_item green" href="{{ route('user.parcel.index') }}">
+                                            <i class="fa-solid fa-truck"></i>
+                                            <p>Parcel Delivery</p>
+                                        </a>
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>

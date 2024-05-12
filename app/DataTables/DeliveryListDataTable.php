@@ -25,8 +25,22 @@ class DeliveryListDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
+            ->addColumn('picked-up', function ($query) {
+                if ($query->order_status !== 'out_for_delivery') {
+                    $button = '<label class="custom-switch mt-2">
+                    <input type="checkbox" name="custom-switch-checkbox" data-id="' . $query->id . '" class="custom-switch-input change-status">
+                    <span class="custom-switch-indicator"></span>
+                    </label>';
+                } else {
+                    $button = '<label class="custom-switch mt-2">
+                    <input type="checkbox" checked name="custom-switch-checkbox" data-id="' . $query->id . '" class="custom-switch-input change-status" >
+                    <span class="custom-switch-indicator"></span>
+                </label>';
+                }
+                return $button;
+            })
             ->addColumn('action', function ($query) {
-                $showBtn = "<a href='" . route('user.orders.show', $query->id) . "' class='btn btn-primary'><i class='far fa-eye'></i></a>";
+                $showBtn = "<a href='" . route('user.parcels.deliver', $query->id) . "' class='btn btn-primary'><i class='fa-solid fa-truck'></i></a>";
 
                 return $showBtn;
             })
@@ -74,7 +88,7 @@ class DeliveryListDataTable extends DataTable
                         break;
                 }
             })
-            ->rawColumns(['order_status', 'action', 'payment_status'])
+            ->rawColumns(['order_status', 'action', 'payment_status', 'picked-up'])
             ->setRowId('id');
     }
 
@@ -121,6 +135,7 @@ class DeliveryListDataTable extends DataTable
             Column::make('order_status'),
             Column::make('payment_status'),
             Column::make('payment_method'),
+            Column::make('picked-up'),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

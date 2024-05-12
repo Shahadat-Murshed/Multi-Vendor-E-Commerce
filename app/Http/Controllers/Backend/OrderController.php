@@ -83,7 +83,9 @@ class OrderController extends Controller
     {
         $order = Order::findOrFail($request->order_id);
         $order->asigned_delivery_to = $request->delivery_man;
-        $order->asigned_delivery_to_mail = $request->delivery_man;
+        $id = Delivery_boy::where('id', $request->delivery_man)->pluck('email');
+        $mail = $id->implode(', ');
+        $order->asigned_delivery_to_mail = $mail;
         $order->save();
 
         $name = Delivery_boy::findorFail($request->delivery_man)->name;

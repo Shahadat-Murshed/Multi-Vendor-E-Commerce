@@ -108,4 +108,7 @@ Route::group(['middleware' => ['auth', 'verified', 'role:user'], 'prefix' => 'us
 
     /** Vendor request route */
     Route::get('parcel', [ParcelDeliveryController::class, 'index'])->name('parcel.index');
+    Route::get('parcel/deliver/{id}', [ParcelDeliveryController::class, 'deliver'])->name('parcels.deliver');
+    Route::put('parcel/update/{id}', [ParcelDeliveryController::class, 'update'])->name('parcels.update');
+    Route::put('parcel/status-change', [ParcelDeliveryController::class, 'changeStatus'])->name('parcel.status-change');
 });

@@ -131,6 +131,7 @@ class DeliveryListDataTable extends DataTable
             Column::make('id'),
             Column::make('customer'),
             Column::make('date'),
+            Column::make('delivery_time'),
             Column::make('amount'),
             Column::make('order_status'),
             Column::make('payment_status'),

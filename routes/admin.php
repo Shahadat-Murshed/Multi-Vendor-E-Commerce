@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\ChildCategoryController;
 use App\Http\Controllers\Backend\CodSettingController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CustomerListController;
+use App\Http\Controllers\Backend\DeliveyManListController;
 use App\Http\Controllers\Backend\FlashSaleController;
 use App\Http\Controllers\Backend\HomePageSettingController;
 use App\Http\Controllers\Backend\ManageUserController;
@@ -134,6 +135,11 @@ Route::put('vendor-requests/{id}/change-status', [VendorRequestController::class
 /** coustomer list routes */
 Route::get('customer', [CustomerListController::class, 'index'])->name('customer.index');
 Route::put('customer/status-change', [CustomerListController::class, 'changeStatus'])->name('customer.status-change');
+
+
+/** Delivery Man list routes */
+Route::get('delivery-man', [DeliveyManListController::class, 'index'])->name('delivery-man.index');
+Route::put('delivery-man/status-change', [DeliveyManListController::class, 'changeStatus'])->name('delivery-man.status-change');
 
 /** admin list routes */
 Route::get('admin-list', [AdminListController::class, 'index'])->name('admin-list.index');

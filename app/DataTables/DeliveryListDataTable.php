@@ -2,8 +2,9 @@
 
 namespace App\DataTables;
 
+use App\Models\Delivery_boy;
+use App\Models\DeliveryList;
 use App\Models\Order;
-use App\Models\VendorOrder;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\EloquentDataTable;
@@ -14,7 +15,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class UserOrderDataTable extends DataTable
+class DeliveryListDataTable extends DataTable
 {
     /**
      * Build the DataTable class.
@@ -82,7 +83,7 @@ class UserOrderDataTable extends DataTable
      */
     public function query(Order $model): QueryBuilder
     {
-        return $model::where('user_id', Auth::user()->id)->newQuery();
+        return $model->where('asigned_delivery_to_mail', Auth::user()->email)->newQuery();
     }
 
     /**
@@ -91,11 +92,11 @@ class UserOrderDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-            ->setTableId('vendororder-table')
+            ->setTableId('deliverylist-table')
             ->columns($this->getColumns())
             ->minifiedAjax()
             //->dom('Bfrtip')
-            ->orderBy(0)
+            ->orderBy(1)
             ->selectStyleSingle()
             ->buttons([
                 Button::make('excel'),
@@ -114,10 +115,8 @@ class UserOrderDataTable extends DataTable
     {
         return [
             Column::make('id'),
-            Column::make('invoice_id'),
             Column::make('customer'),
             Column::make('date'),
-            Column::make('product_qty'),
             Column::make('amount'),
             Column::make('order_status'),
             Column::make('payment_status'),
@@ -135,6 +134,6 @@ class UserOrderDataTable extends DataTable
      */
     protected function filename(): string
     {
-        return 'UserOrder_' . date('YmdHis');
+        return 'DeliveryList_' . date('YmdHis');
     }
 }

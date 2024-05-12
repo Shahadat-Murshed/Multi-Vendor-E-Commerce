@@ -165,7 +165,8 @@
                                 class="fa-solid fa-user-tie mr-0"></i>Admins</a>
                     </li>
                     <li class="{{ setActive(['admin.admin-list.index']) }}">
-                        <a class="nav-link" href="{{ route('admin.admin-list.index') }}"><i class="fa-solid fa-truck mr-0"></i>Delivery
+                        <a class="nav-link" href="{{ route('admin.delivery-man.index') }}"><i
+                                class="fa-solid fa-truck mr-0"></i>Delivery
                             Mans</a>
                     </li>
                     <li class="{{ setActive(['admin.customer.index']) }}">

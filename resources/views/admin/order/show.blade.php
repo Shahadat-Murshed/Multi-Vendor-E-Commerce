@@ -137,13 +137,20 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <a href="{{ route('admin.asign-delivery', $order->id) }}">
-                                                <button id="deliveryButton" class="mt-4 col-md-12 btn btn-primary icon-left"><i
-                                                        class="fas fa-truck"></i> Assign A
-                                                    Delivery Man</button>
-                                            </a>
-                                        </div>
+                                        @if ($order->asigned_delivery_to)
+                                            <div class="form-group">
+                                                <label for="">Delivery Assigned to</label>
+                                                <p>{{ $order->delivery_man->name }}</p>
+                                            </div>
+                                        @else
+                                            <div class="form-group">
+                                                <a href="{{ route('admin.asign-delivery', $order->id) }}">
+                                                    <button id="deliveryButton" class="mt-4 col-md-12 btn btn-primary icon-left"><i
+                                                            class="fas fa-truck"></i> Assign A
+                                                        Delivery Man</button>
+                                                </a>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="col-lg-4 text-right">

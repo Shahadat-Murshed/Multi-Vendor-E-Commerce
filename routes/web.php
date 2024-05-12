@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\ParcelDeliveryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\VendorController;
@@ -104,4 +105,7 @@ Route::group(['middleware' => ['auth', 'verified', 'role:user'], 'prefix' => 'us
     /** Vendor request route */
     Route::get('vendor-request', [UserVendorRequestController::class, 'index'])->name('vendor-request.index');
     Route::post('vendor-request', [UserVendorRequestController::class, 'create'])->name('vendor-request.create');
+
+    /** Vendor request route */
+    Route::get('parcel', [ParcelDeliveryController::class, 'index'])->name('parcel.index');
 });

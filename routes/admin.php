@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\AdminListController;
 use App\Http\Controllers\Backend\AdminVendorProfileController;
 use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -9,6 +10,7 @@ use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\CustomerListController;
 use App\Http\Controllers\Backend\FlashSaleController;
 use App\Http\Controllers\Backend\HomePageSettingController;
+use App\Http\Controllers\Backend\ManageUserController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PaymentSettingController;
 use App\Http\Controllers\Backend\PaypalSettingController;
@@ -23,6 +25,7 @@ use App\Http\Controllers\Backend\ShippingRuleController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\StripeSettingController;
 use App\Http\Controllers\Backend\SubCategoryController;
+use App\Http\Controllers\Backend\VendorConditionController;
 use App\Http\Controllers\Backend\VendorListController;
 use App\Http\Controllers\Backend\VendorRequestController;
 use Illuminate\Support\Facades\Route;
@@ -129,18 +132,27 @@ Route::put('vendor-requests/{id}/change-status', [VendorRequestController::class
 Route::get('customer', [CustomerListController::class, 'index'])->name('customer.index');
 Route::put('customer/status-change', [CustomerListController::class, 'changeStatus'])->name('customer.status-change');
 
+/** admin list routes */
+Route::get('admin-list', [AdminListController::class, 'index'])->name('admin-list.index');
+Route::put('admin-list/status-change', [AdminListController::class, 'changeStatus'])->name('admin-list.status-change');
+Route::delete('admin-list/{id}', [AdminListController::class, 'destory'])->name('admin-list.destory');
+
 /** vendors list routes */
 Route::get('vendor-list', [VendorListController::class, 'index'])->name('vendor-list.index');
 Route::put('vendor-list/status-change', [VendorListController::class, 'changeStatus'])->name('vendor-list.status-change');
+Route::get('vendor-condition', [VendorConditionController::class, 'index'])->name('vendor-condition.index');
+Route::put('vendor-condition/update', [VendorConditionController::class, 'update'])->name('vendor-condition.update');
+
+/** manage user routes */
+Route::get('manage-user', [ManageUserController::class, 'index'])->name('manage-user.index');
+Route::post('manage-user', [ManageUserController::class, 'create'])->name('manage-user.create');
 
 /** Order routes */
 Route::get('payment-status', [OrderController::class, 'changePaymentStatus'])->name('payment.status');
 Route::get('order-status', [OrderController::class, 'changeOrderStatus'])->name('order.status');
-
 Route::get('pending-orders', [OrderController::class, 'pendingOrders'])->name('pending-orders');
 Route::get('processed-orders', [OrderController::class, 'processedOrders'])->name('processed-orders');
 Route::get('dropped-off-orders', [OrderController::class, 'droppedOfOrders'])->name('dropped-off-orders');
-
 Route::get('shipped-orders', [OrderController::class, 'shippedOrders'])->name('shipped-orders');
 Route::get('out-for-delivery-orders', [OrderController::class, 'outForDeliveryOrders'])->name('out-for-delivery-orders');
 Route::get('delivered-orders', [OrderController::class, 'deliveredOrders'])->name('delivered-orders');

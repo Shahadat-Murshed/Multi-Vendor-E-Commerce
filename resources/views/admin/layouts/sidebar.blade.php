@@ -142,34 +142,50 @@
                 </ul>
             </li>
 
-            <li class="dropdown {{ setActive(['admin.vendor-requests.*', 'admin.customer.index', 'admin.vendor-list.index']) }}">
+            <li
+                class="dropdown {{ setActive(['admin.vendor-requests.*', 'admin.customer.index', 'admin.vendor-list.index', 'admin.admin-list.index']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-regular fa-user"></i>
                     <span>Manage Users</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.vendor-list.index']) }}">
-                        <a class="nav-link" href="{{ route('admin.vendor-list.index') }}"><i class="fa-solid fa-shop"></i>All
+                        <a class="nav-link" href="{{ route('admin.vendor-list.index') }}"><i class="fa-solid fa-shop mr-0"></i>All
                             Vendors</a>
                     </li>
                     <li class="{{ setActive(['admin.vendor-requests.*']) }}">
-                        <a class="nav-link" href="{{ route('admin.vendor-requests.index') }}"><i class="fa-solid fa-spinner"></i>Pending
+                        <a class="nav-link" href="{{ route('admin.vendor-requests.index') }}"><i
+                                class="fa-solid fa-spinner mr-0"></i>Pending
                             Vendors</a>
                     </li>
                     <li class="{{ setActive(['admin.customer.index']) }}">
-                        <a class="nav-link" href="{{ route('admin.customer.index') }}"><i class="fa-solid fa-person"></i>Customers</a>
+                        <a class="nav-link" href="{{ route('admin.customer.index') }}"><i
+                                class="fa-solid fa-person mr-0"></i>Customers</a>
+                    </li>
+                    <li class="{{ setActive(['admin.admin-list.index']) }}">
+                        <a class="nav-link" href="{{ route('admin.admin-list.index') }}"><i
+                                class="fa-solid fa-person mr-0"></i>Admins</a>
+                    </li>
+                    <li class="{{ setActive(['admin.customer.index']) }}">
+                        <a class="nav-link" href="{{ route('admin.manage-user.index') }}"><i class="fa-solid fa-user mr-0"></i>Create an
+                            User</a>
                     </li>
                 </ul>
             </li>
-            <li class="dropdown {{ setActive(['admin.slider.*']) }}">
+            <li class="dropdown {{ setActive(['admin.slider.*', 'admin.vendor-condition.index', 'admin.home-page-setting']) }}">
                 <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fa-solid fa-window-restore"></i>
                     <span>Manage Website</span></a>
                 <ul class="dropdown-menu">
                     <li class="{{ setActive(['admin.slider.*']) }}">
                         <a class="nav-link" href="{{ route('admin.slider.index') }}"><i class="fa-regular fa-image mr-0"></i>Slider</a>
                     </li>
-                    <li class="{{ setActive(['admin.home-page-setting.*']) }}">
+                    <li class="{{ setActive(['admin.home-page-setting']) }}">
                         <a class="nav-link" href="{{ route('admin.home-page-setting') }}"><i class="fa-regular fa-image mr-0"></i>Home
                             Page
                             Settings</a>
+                    </li>
+                    <li class="{{ setActive(['admin.vendor-condition.index']) }}">
+                        <a class="nav-link" href="{{ route('admin.vendor-condition.index') }}"><i
+                                class="fa-solid fa-list-check mr-0"></i>Vendor
+                            Condition</a>
                     </li>
                 </ul>
             </li>

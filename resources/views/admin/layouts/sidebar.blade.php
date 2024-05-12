@@ -162,7 +162,11 @@
                     </li>
                     <li class="{{ setActive(['admin.admin-list.index']) }}">
                         <a class="nav-link" href="{{ route('admin.admin-list.index') }}"><i
-                                class="fa-solid fa-person mr-0"></i>Admins</a>
+                                class="fa-solid fa-user-tie mr-0"></i>Admins</a>
+                    </li>
+                    <li class="{{ setActive(['admin.admin-list.index']) }}">
+                        <a class="nav-link" href="{{ route('admin.admin-list.index') }}"><i class="fa-solid fa-truck mr-0"></i>Delivery
+                            Mans</a>
                     </li>
                     <li class="{{ setActive(['admin.customer.index']) }}">
                         <a class="nav-link" href="{{ route('admin.manage-user.index') }}"><i class="fa-solid fa-user mr-0"></i>Create an

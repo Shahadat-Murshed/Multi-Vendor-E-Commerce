@@ -1,12 +1,15 @@
 @php
     $categories = \App\Models\Category::where('status', 1)
-    ->with(['subCategories' => function($query){
-        $query->where('status', 1)
-        ->with(['childCategories' => function($query){
-        $query->where('status', 1);
-        }]);
-    }])
-    ->get();
+        ->with([
+            'subCategories' => function ($query) {
+                $query->where('status', 1)->with([
+                    'childCategories' => function ($query) {
+                        $query->where('status', 1);
+                    },
+                ]);
+            },
+        ])
+        ->get();
 @endphp
 <nav class="wsus__main_menu d-none d-lg-block">
     <div class="container">
@@ -21,27 +24,30 @@
                             <a href="#"><i class="fas fa-star"></i> hot promotions</a>
                         </li> --}}
                         @foreach ($categories as $category)
-                        <li>
-                            <a class="{{count($category->subCategories)>0 ? 'wsus__droap_arrow' : ''}}" href="#"><i class="{{$category->icon}}"></i>{{$category->name}}</a>
-                            @if (count($category->subCategories)>0)
-                                <ul class="wsus_menu_cat_droapdown">
-                                    @foreach ($category->subCategories as $subCategory )
-                                        <li>
-                                            <a href="">{{$subCategory->name}}<i class="{{count($subCategory->childCategories) > 0 ? "fas fa-angle-right" : ''}}"></i> </a>
-                                            @if (count($subCategory->childCategories)>0)
-                                                <ul class="wsus__sub_category">
-                                                    @foreach ($subCategory->childCategories as $childCategory )
-                                                        <li><a href="">{{$childCategory->name}}</a></li>
-                                                    @endforeach
-                                                </ul>
-                                            @endif
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            @endif
-                        </li>
+                            <li>
+                                <a class="{{ count($category->subCategories) > 0 ? 'wsus__droap_arrow' : '' }}" href="#"><i
+                                        class="{{ $category->icon }}"></i>{{ $category->name }}</a>
+                                @if (count($category->subCategories) > 0)
+                                    <ul class="wsus_menu_cat_droapdown">
+                                        @foreach ($category->subCategories as $subCategory)
+                                            <li>
+                                                <a href="">{{ $subCategory->name }}<i
+                                                        class="{{ count($subCategory->childCategories) > 0 ? 'fas fa-angle-right' : '' }}"></i>
+                                                </a>
+                                                @if (count($subCategory->childCategories) > 0)
+                                                    <ul class="wsus__sub_category">
+                                                        @foreach ($subCategory->childCategories as $childCategory)
+                                                            <li><a href="">{{ $childCategory->name }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </li>
                         @endforeach
-                        
+
                         <li>
                             <a href="#"><i class="fal fa-gem"></i> View All
                                 Categories</a>
@@ -49,12 +55,12 @@
                     </ul>
 
                     <ul class="wsus__menu_item">
-                        <li><a class="active" href="{{route('home')}}">home</a></li>
+                        <li><a class="active" href="{{ route('home') }}">home</a></li>
                     </ul>
                     <ul class="wsus__menu_item wsus__menu_item_right">
                         <li><a href="contact.html">contact</a></li>
-                        <li><a href="dsahboard.html">my account</a></li>
-                        <li><a href="{{route('login')}}">login</a></li>
+                        <li><a href="{{ route('user.dashboard') }}">my account</a></li>
+                        <li><a href="{{ route('login') }}">login</a></li>
                     </ul>
                 </div>
             </div>
@@ -80,14 +86,14 @@
 
     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                role="tab" aria-controls="pills-home" aria-selected="true">
+            <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" role="tab"
+                aria-controls="pills-home" aria-selected="true">
                 Categories
             </button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                role="tab" aria-controls="pills-profile" aria-selected="false">
+            <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" role="tab"
+                aria-controls="pills-profile" aria-selected="false">
                 main menu
             </button>
         </li>
@@ -97,25 +103,31 @@
             <div class="wsus__mobile_menu_main_menu">
                 <div class="accordion accordion-flush" id="accordionFlushExample">
                     <ul class="wsus_mobile_menu_category">=
-                        @foreach ($categories as $category )
+                        @foreach ($categories as $category)
                             <li>
-                                <a href="#" class="{{count($category->subCategories) > 0 ? 'accordion-button' : ''}} collapsed" data-bs-toggle="collapse"
-                                    data-bs-target="#flush-collapseThreew-{{$loop->index}}" aria-expanded="false"
-                                    aria-controls="flush-collapseThreew-{{$loop->index}}"><i class="{{$category->icon}}"></i>{{$category->name}}</a>
-                                    
+                                <a href="#" class="{{ count($category->subCategories) > 0 ? 'accordion-button' : '' }} collapsed"
+                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseThreew-{{ $loop->index }}"
+                                    aria-expanded="false" aria-controls="flush-collapseThreew-{{ $loop->index }}"><i
+                                        class="{{ $category->icon }}"></i>{{ $category->name }}</a>
+
                                 @if (count($category->subCategories))
-                                    <div id="flush-collapseThreew-{{$loop->index}}" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                    <div id="flush-collapseThreew-{{ $loop->index }}" class="accordion-collapse collapse"
+                                        data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
                                             <ul>
-                                                @foreach ($category->subCategories as $subCategory )
-                                                    <li><a href="#">{{$subCategory->name}} <i style="font-size: 10px" class="
-                                                        {{count($subCategory->childCategories) > 0 ? 'fas fa-arrow-down' : ''}} mt-1 ms-2 "></i></a></li>
+                                                @foreach ($category->subCategories as $subCategory)
+                                                    <li><a href="#">{{ $subCategory->name }} <i style="font-size: 10px"
+                                                                class="
+                                                        {{ count($subCategory->childCategories) > 0 ? 'fas fa-arrow-down' : '' }} mt-1 ms-2 "></i></a>
+                                                    </li>
                                                     @if (count($subCategory->childCategories))
-                                                        <div id="flush-collapseThreew-{{$loop->index}}" class="accordion-collapse collapse">
+                                                        <div id="flush-collapseThreew-{{ $loop->index }}"
+                                                            class="accordion-collapse collapse">
                                                             <div class="accordion-body">
                                                                 <ul>
-                                                                    @foreach ($subCategory->childCategories as $schildCategory )
-                                                                        <li><a class="ms-5" href="#">{{$schildCategory->name}}</a></li>
+                                                                    @foreach ($subCategory->childCategories as $schildCategory)
+                                                                        <li><a class="ms-5"
+                                                                                href="#">{{ $schildCategory->name }}</a></li>
                                                                     @endforeach
                                                                 </ul>
                                                             </div>
@@ -125,10 +137,10 @@
                                             </ul>
                                         </div>
                                     </div>
-                                @endif 
+                                @endif
                             </li>
                         @endforeach
-                        
+
                         <li>
                             <a href="#"><i class="fal fa-gem"></i> View All
                                 Categories</a>
@@ -144,10 +156,8 @@
                         <li><a href="index.html">home</a></li>
                         <li>
                             <a href="#" class="accordion-button collapsed" data-bs-toggle="collapse"
-                                data-bs-target="#flush-collapseThree" aria-expanded="false"
-                                aria-controls="flush-collapseThree">shop</a>
-                            <div id="flush-collapseThree" class="accordion-collapse collapse"
-                                data-bs-parent="#accordionFlushExample2">
+                                data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">shop</a>
+                            <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample2">
                                 <div class="accordion-body">
                                     <ul>
                                         <li><a href="#">men's</a></li>

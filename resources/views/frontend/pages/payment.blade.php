@@ -6,8 +6,8 @@
 
 @section('content')
     <!--============================
-            BREADCRUMB START
-        ==============================-->
+                    BREADCRUMB START
+                ==============================-->
     <section id="wsus__breadcrumb">
         <div class="wsus_breadcrumb_overlay">
             <div class="container">
@@ -24,13 +24,13 @@
         </div>
     </section>
     <!--============================
-            BREADCRUMB END
-        ==============================-->
+                    BREADCRUMB END
+                ==============================-->
 
 
     <!--============================
-            PAYMENT PAGE START
-        ==============================-->
+                    PAYMENT PAGE START
+                ==============================-->
     <section id="wsus__cart_view">
         <div class="container">
             <div class="wsus__pay_info_area">
@@ -49,11 +49,6 @@
                                 <button class="nav-link common_btn" id="v-pills-profile-tab" data-bs-toggle="pill"
                                     data-bs-target="#v-pills-stripe" type="button" role="tab" aria-controls="v-pills-stripe"
                                     aria-selected="false">Stripe</button>
-
-                                <button class="nav-link common_btn" id="v-pills-profile-tab" data-bs-toggle="pill"
-                                    data-bs-target="#v-pills-razorpay" type="button" role="tab" aria-controls="v-pills-stripe"
-                                    aria-selected="false">RazorPay</button>
-
                                 <button class="nav-link common_btn" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-cod"
                                     type="button" role="tab" aria-controls="v-pills-stripe" aria-selected="false">Cash On Delivery</button>
 
@@ -78,9 +73,9 @@
 
                             @include('frontend.pages.payment-gateway.stripe')
 
-                            {{-- @include('frontend.pages.payment-gateway.razorpay')
+                            {{-- @include('frontend.pages.payment-gateway.razorpay') --}}
 
-                            @include('frontend.pages.payment-gateway.cod') --}}
+                            @include('frontend.pages.payment-gateway.cod')
 
 
 
@@ -100,6 +95,6 @@
         </div>
     </section>
     <!--============================
-            PAYMENT PAGE END
-        ==============================-->
+                    PAYMENT PAGE END
+                ==============================-->
 @endsection

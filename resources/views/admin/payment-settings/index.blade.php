@@ -32,9 +32,9 @@
 
                                         @include('admin.payment-settings.sections.stripe-setting')
 
-                                        {{-- @include('admin.payment-settings.sections.razorpay-setting')
+                                        {{-- @include('admin.payment-settings.sections.razorpay-setting') --}}
 
-                            @include('admin.payment-settings.sections.cod-setting') --}}
+                                        @include('admin.payment-settings.sections.cod-setting')
 
                                     </div>
                                 </div>

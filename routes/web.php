@@ -91,6 +91,9 @@ Route::group(['middleware' => ['auth', 'verified', 'role:user'], 'prefix' => 'us
     /** Stripe routes */
     Route::post('stripe/payment', [PaymentController::class, 'payWithStripe'])->name('stripe.payment');
 
+    /** COD routes */
+    Route::get('cod/payment', [PaymentController::class, 'payWithCod'])->name('cod.payment');
+
     /** User Address Controller **/
     Route::resource('address', UserAddressController::class);
 

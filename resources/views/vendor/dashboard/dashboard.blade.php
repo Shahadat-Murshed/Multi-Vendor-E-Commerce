@@ -1,57 +1,46 @@
 @extends('vendor.layouts.master')
 @section('title')
-  {{Auth::user()->name}} - Vendor Dashboard
+    {{ Auth::user()->name }} - Vendor Dashboard
 @endsection
 @section('content')
-<section id="wsus__dashboard">
-    <div class="container-fluid">
-      @include('vendor.layouts.sidebar')
-      <div class="row">
-        <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
-          <div class="dashboard_content">
-            <div class="wsus__dashboard">
-              <div class="row">
-                <div class="col-xl-2 col-6 col-md-4">
-                  <a class="wsus__dashboard_item red" href="dsahboard_order.html">
-                    <i class="far fa-address-book"></i>
-                    <p>order</p>
-                  </a>
+    <section id="wsus__dashboard">
+        <div class="container-fluid">
+            @include('vendor.layouts.sidebar')
+            <div class="row">
+                <div class="col-xl-9 col-xxl-10 col-lg-9 ms-auto">
+                    <div class="dashboard_content">
+                        <div class="wsus__dashboard">
+                            <div class="row">
+                                <div class="col-xl-3 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item red" href="{{ route('vendor.orders.index') }}">
+                                        <i class="fas fa-cart-plus"></i>
+                                        <p>order</p>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item green" href="{{ route('vendor.products.index') }}">
+                                        <i class="fa-solid fa-cube"></i>
+                                        <p>products</p>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item sky" href="{{ route('vendor.shop-profile.index') }}">
+                                        <i class="fab fa-shopify"></i>
+                                        <p>shop profile</p>
+                                    </a>
+                                </div>
+                                <div class="col-xl-3 col-6 col-md-4">
+                                    <a class="wsus__dashboard_item blue" href="{{ route('vendor.profile') }}">
+                                        <i class="far fa-user"></i>
+                                        <p>My Profile</p>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-xl-2 col-6 col-md-4">
-                  <a class="wsus__dashboard_item green" href="dsahboard_download.html">
-                    <i class="fa-solid fa-cloud-download"></i>
-                    <p>download</p>
-                  </a>
-                </div>
-                <div class="col-xl-2 col-6 col-md-4">
-                  <a class="wsus__dashboard_item sky" href="dsahboard_review.html">
-                    <i class="fas fa-star"></i>
-                    <p>review</p>
-                  </a>
-                </div>
-                <div class="col-xl-2 col-6 col-md-4">
-                  <a class="wsus__dashboard_item blue" href="dsahboard_wishlist.html">
-                    <i class="far fa-heart"></i>
-                    <p>wishlist</p>
-                  </a>
-                </div>
-                <div class="col-xl-2 col-6 col-md-4">
-                  <a class="wsus__dashboard_item orange" href="dsahboard_profile.html">
-                    <i class="fas fa-user-shield"></i>
-                    <p>profile</p>
-                  </a>
-                </div>
-                <div class="col-xl-2 col-6 col-md-4">
-                  <a class="wsus__dashboard_item purple" href="dsahboard_address.html">
-                    <i class="fas fa-address-card"></i>
-                    <p>address</p>
-                  </a>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 @endsection

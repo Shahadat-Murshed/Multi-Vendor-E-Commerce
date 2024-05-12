@@ -12,7 +12,7 @@
             </a>
         </li>
         <li>
-            <a class="{{ setActive(['vendor.dashboard']) }}" href="{{ route('vendor.orders.index') }}">
+            <a class="{{ setActive(['vendor.orders.index']) }}" href="{{ route('vendor.orders.index') }}">
                 <i class="fas fa-cart-plus"></i>
                 Orders
             </a>
